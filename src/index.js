@@ -1,17 +1,16 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React from "react";
+import ReactDOM from "react-dom/client";
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+
+const headings = React.createElement("h1", {id:"Jai"}, "First React Element");
+const headings2 = React.createElement("h1", {className:"jai2"}, "SEocnsd React Element");
+const container = React.createElement("div",{id:"container"},[headings,headings2]);
+
+function Comp1({chil}){
+    const headings3 = React.createElement("h1", {className:"jai2"}, "Third React Element");
+    return [headings3,chil];
+}
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render([<Comp1 chil={headings2} />]);
