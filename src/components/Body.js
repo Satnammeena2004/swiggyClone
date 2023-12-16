@@ -1,38 +1,35 @@
 import Restaurents from "./RestaurantCard";
 import SearchRestaurent from "./SearchRestaurant";
-import { useEffect,useState } from "react";
-import { Restaurant_DATA } from "../constants";
+import { useEffect,useLayoutEffect,useState } from "react";
+import {getdata } from "../constants";
+import Shimmer from "./Shimmer";
 
-const p = new Promise((resolve, reject) => {
-  setTimeout(() => {
-    resolve([...Restaurant_DATA]);
-  }, 3000);
-});
 
 const Body = () => {
   const [addMuch, setAddMuch] = useState(0);
+  const [ALL_RESTAURANT_DATA,setALL_RESTAURANT_DATA] = useState([]);
   const [restaurentsList, setRestaurentsList] = useState([]);
 
-  async function delay() {
-    const res = await p;
-    setRestaurentsList(res);
-  }
-  useEffect(() => {
-    //   async function getdata(){
-    //     const responce = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=25.2137468&lng=75.86483330000002&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING")
-    //    const res = await responce.json()
-    //    setRestaurentsList([...res.data.cards.map(e=>{console.log(e.card.card?.gridElements?.infoWithStyle?.restaurants?.map((e)=>e))})])
-    // }
-    // getdata()
+  console.log("before Effect")
 
-    delay();
+
+
+  useEffect(() => {
+  async  function almostGetting(){
+          const res = await getdata();
+          console.log(res)
+          setRestaurentsList(res);
+          setALL_RESTAURANT_DATA(res)
+    }
+    almostGetting();
   }, []);
-  
+ 
+//  if(!ALL_RESTAURANT_DATA)return ;
+
     return (
       <div>
-        <SearchRestaurent restaurents_DATA={Restaurant_DATA} restaurentsList={restaurentsList} setRestaurentsList={setRestaurentsList}  />
-        <Restaurents  restaurentsList={restaurentsList} addMuch={addMuch} setAddMuch={setAddMuch} />
-  
+      <SearchRestaurent  ALL_RESTAURANT_DATA={ALL_RESTAURANT_DATA} restaurentsList={restaurentsList} setRestaurentsList={setRestaurentsList}  />
+      <Restaurents  restaurentsList={restaurentsList} addMuch={addMuch} setAddMuch={setAddMuch} />
       </div>
     );
   };

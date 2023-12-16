@@ -1,0 +1,41 @@
+.shimmer {
+  width: 14rem;
+  height: 15rem;
+  padding: 1rem;
+  /* border: 0.1rem solid black; */
+}
+.shimmer-image {
+  width: 208px;
+  height: 10rem;
+  background: rgb(6 6 6 / 20%);
+  border-radius: 0.3rem;
+  overflow: hidden;
+  position: relative;
+  animation: shimmer-scale 0.7s linear infinite alternate;
+}
+
+.shimmer .shimmer-h1 , .shimmer .shimmer-h2 {
+  width: 50%;
+  border-radius: 0.3rem;
+  background:rgb(6 6 6 / 20%);
+  height: 1rem;
+  margin: 0.5rem 0;
+  animation: shimmer-scale 0.7s linear infinite alternate;
+}
+
+
+
+
+
+@keyframes shimmer-scale {
+    0%{
+   
+        opacity:0.3;
+    }
+    100%{
+       
+        opacity:0.7;
+       
+    }
+}
+

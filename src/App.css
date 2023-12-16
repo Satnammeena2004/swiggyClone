@@ -78,6 +78,16 @@
 }
 
 
+.more-restaurant-btn{
+    padding: 0.5rem 4rem;
+    background: #000000d4;
+    border: 0.2rem solid #363430ba;
+    border-radius: 1.2rem;
+    color: white;
+    font-weight: 700;
+}
+
+
 /* SEARCH BAR */
 
 .search-bar{
@@ -85,6 +95,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    
 }
 
 .search-bar .search-restaurent{
@@ -93,11 +104,16 @@
     width: 40%;
    border: 1px solid hsl(0, 0%, 87%);
     border-radius: 0.1rem;
+    font-weight: 800;
 }
 .search-bar button{
-    border: 1px solid #d9d9d9;
-     border-radius: 0.1rem;
-    padding:0.4rem 0.3rem;
+    padding: 0.3rem 3rem;
+    background: #000000d4;
+    border: 0.2rem solid #363430ba;
+    border-radius: 0.2rem;
+    color: white;
+    font-weight: 700;
+    margin: 0 0.3rem;
 
 }
 
@@ -191,4 +207,8 @@
     text-align: center;
     padding: 1rem;
     box-shadow: 1px 2px 2px 2px rgba(0, 0, 0, 0.458);
+    font-weight: 800;
+    /* position: absolute;
+    bottom: 0;
+    width: 100%; */
 }

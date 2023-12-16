@@ -1,11 +1,11 @@
 import { useState } from "react";
 
-const SearchRestaurent = ({restaurents_DATA,setRestaurentsList})=>{
+const SearchRestaurent = ({ALL_RESTAURANT_DATA,setRestaurentsList})=>{
 
     const [searchString,setSearchString] = useState('');
   
   function handleClick(){
-     setRestaurentsList([...restaurents_DATA.filter((e)=>e.info.name.toLowerCase().includes(searchString.toLowerCase()))])
+     setRestaurentsList([...ALL_RESTAURANT_DATA?.filter((e)=>e.name.toLowerCase().includes(searchString.toLowerCase()))])
   }
   
     return (

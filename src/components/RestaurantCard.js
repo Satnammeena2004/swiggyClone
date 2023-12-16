@@ -1,7 +1,8 @@
 import "../app.css";
 import {FaStar} from "react-icons/fa";
 import {MdLocationPin} from "react-icons/md";
-import {memo} from "react";
+import {memo, useState} from "react";
+import Shimmer from "./Shimmer";
 
 const RestaurentCard = memo(
   ({
@@ -51,16 +52,22 @@ const RestaurentCard = memo(
 );
 
 const Restaurents = ({restaurentsList, addMuch, setAddMuch}) => {
+ 
+
   return (
     <>
       <div className="restaurents">
+        {restaurentsList.length >0?'':Array(6).fill(0).map((e)=><Shimmer/>)}
         {restaurentsList?.slice(0, 6 + addMuch).map((e) => (
-          <RestaurentCard key={e.info.id} {...e.info} />
-        ))}
+        <RestaurentCard key={e.id} {...e} /> ))}
       </div>
-      <div style={{textAlign: "center"}}>
-        <button onClick={() => setAddMuch((n) => n + 3)}>+3</button>
+      {
+        restaurentsList.length>0?
+      <div style={{textAlign: "center",padding:'1rem'}}>
+        <button className="more-restaurant-btn" onClick={() => setAddMuch((n) => n + 3)}>MORE</button>
       </div>
+      :''
+}
     </>
   );
 };
