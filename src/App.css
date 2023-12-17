@@ -40,23 +40,45 @@
 
 /* restaurents */
 
-.restaurents{
-    /* box-shadow: 1px 0px 0px 1px rgba(0, 0, 0, 0.458); */
-    padding: 1rem 15vw;
+.restaurents-carousel{
     display: flex;
-    /* justify-content: space-evenly;
-    flex-wrap: wrap; */
-    /* grid-template-co
-    columns: repeat(6,1fr); */
+    overflow-x: scroll;
+    gap: 1rem 4vw;
+    padding: 1rem;
+    scroll-snap-type:x mandatory;
+/* border: 0.1rem solid blue; */
+
+}
+
+.carousel-items{
+    scroll-snap-align: center;
+}
+
+.restaurents-carousel::-webkit-scrollbar {
+    display: none;
+  }
+.restaurents-carousel .carousel-items img{
+    width: 30vw;
+
+}
+
+.main{
+    padding: 1rem 15vw;
+}
+
+.restaurents{
+   
+    /* padding: 1rem; */
+    display: flex;
     flex-wrap: wrap;
-    gap: 1rem 4rem;
-    /* justify-content: space-around; */
+    gap: 1rem 4vw;
+
    
 }
 
 
 
-.restaurents h1{
+.restaurents h1 , .restaurents-carousel h1{
     margin: 0px;
     -webkit-font-smoothing: antialiased;
     /* font-family: "Basis Grotesque Pro"; */
@@ -79,7 +101,7 @@
 
 
 .more-restaurant-btn{
-    padding: 0.5rem 4rem;
+    padding: 0.5rem 4vw;
     background: #000000d4;
     border: 0.2rem solid #363430ba;
     border-radius: 1.2rem;
@@ -107,7 +129,7 @@
     font-weight: 800;
 }
 .search-bar button{
-    padding: 0.3rem 3rem;
+    padding: 0.3rem 3vw;
     background: #000000d4;
     border: 0.2rem solid #363430ba;
     border-radius: 0.2rem;
@@ -134,7 +156,6 @@
 }
 .restaurent-card{
     max-width:  15rem;
-    /* box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.458); */
     padding: 1rem;
     display: grid;
     grid-template-rows: 1fr 0.5fr;

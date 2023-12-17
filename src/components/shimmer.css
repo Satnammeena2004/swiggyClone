@@ -12,6 +12,7 @@
   overflow: hidden;
   position: relative;
   animation: shimmer-scale 0.7s linear infinite alternate;
+ 
 }
 
 .shimmer .shimmer-h1 , .shimmer .shimmer-h2 {

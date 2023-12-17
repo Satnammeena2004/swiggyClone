@@ -3,34 +3,33 @@ import SearchRestaurent from "./SearchRestaurant";
 import { useEffect,useLayoutEffect,useState } from "react";
 import {getdata } from "../constants";
 import Shimmer from "./Shimmer";
+import RestaurentsCarousel from './RestaurantCarousel'
 
 
 const Body = () => {
   const [addMuch, setAddMuch] = useState(0);
-  const [ALL_RESTAURANT_DATA,setALL_RESTAURANT_DATA] = useState([]);
+  const [ALL_DATA,setALL_DATA] = useState([]);
   const [restaurentsList, setRestaurentsList] = useState([]);
-
-  console.log("before Effect")
 
 
 
   useEffect(() => {
   async  function almostGetting(){
           const res = await getdata();
-          console.log(res)
-          setRestaurentsList(res);
-          setALL_RESTAURANT_DATA(res)
+          setRestaurentsList(res[2]?.restaurants?.map((el)=>el.info));
+          setALL_DATA(res)
     }
     almostGetting();
   }, []);
- 
-//  if(!ALL_RESTAURANT_DATA)return ;
 
     return (
+    <main className="main">
       <div>
-      <SearchRestaurent  ALL_RESTAURANT_DATA={ALL_RESTAURANT_DATA} restaurentsList={restaurentsList} setRestaurentsList={setRestaurentsList}  />
+      <RestaurentsCarousel   ALL_DATA={ALL_DATA} />
+      <SearchRestaurent  ALL_DATA={ALL_DATA} restaurentsList={restaurentsList} setRestaurentsList={setRestaurentsList}  />
       <Restaurents  restaurentsList={restaurentsList} addMuch={addMuch} setAddMuch={setAddMuch} />
       </div>
+    </main>
     );
   };
 

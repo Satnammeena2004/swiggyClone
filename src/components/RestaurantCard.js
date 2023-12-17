@@ -4,7 +4,7 @@ import {MdLocationPin} from "react-icons/md";
 import {memo, useState} from "react";
 import Shimmer from "./Shimmer";
 
-const RestaurentCard = memo(
+export const RestaurentCard = memo(
   ({
     id,
     name,
@@ -51,13 +51,15 @@ const RestaurentCard = memo(
   }
 );
 
+
 const Restaurents = ({restaurentsList, addMuch, setAddMuch}) => {
  
 
   return (
     <>
+    <h1>Top restaurant chains in Kota</h1>
       <div className="restaurents">
-        {restaurentsList.length >0?'':Array(6).fill(0).map((e)=><Shimmer/>)}
+        {restaurentsList.length > 0 ?'':Array(6).fill(0).map((e,i)=><Shimmer key={i} />)}
         {restaurentsList?.slice(0, 6 + addMuch).map((e) => (
         <RestaurentCard key={e.id} {...e} /> ))}
       </div>

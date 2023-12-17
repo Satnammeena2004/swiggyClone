@@ -1,7 +1,8 @@
 async function getdata(){
     const responce = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=25.2137468&lng=75.86483330000002&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING")
+
    const res = await responce.json()
- return res.data.cards.map((e)=>e.card.card?.gridElements?.infoWithStyle?.restaurants?.map((el)=>el.info))[2]
+ return res.data.cards.map((e)=>e.card.card?.gridElements?.infoWithStyle)
  
 }
 
