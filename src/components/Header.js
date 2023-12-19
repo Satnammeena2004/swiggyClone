@@ -52,10 +52,10 @@ const Title = () => {
             </Link>
           </li>
           <li>
-            <BiSolidOffer /> Offer
+        <Link to="/offers">   <BiSolidOffer /> Offer</Link> 
           </li>
           <li>
-            <FiShoppingCart /> Cart
+         <Link to="/cart">  <FiShoppingCart /> Cart</Link> 
           </li>
         </ul>
         <button className='logIn-btn' onClick={()=>setIsLoggIn(!isLoggIn)}>{isLoggIn?"Sign":'Log'} In</button>

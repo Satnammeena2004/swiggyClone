@@ -49,7 +49,12 @@ const RestaurantMenu = () => {
             return (
               <div key={i} className="restaurant_manu_item">
                 <h1>{card.title}</h1>
-                <ul>
+
+                {
+                
+                
+                
+                /* <ul>
                   {card.itemCards
                     ? card.itemCards.map((ell) => {
                         //    console.log(ell.info?.card?.imageId)
@@ -69,7 +74,7 @@ const RestaurantMenu = () => {
                         );
                       })
                     : ""}
-                </ul>
+                </ul> */}
               </div>
             );
           })

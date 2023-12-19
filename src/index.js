@@ -7,6 +7,9 @@ import Error from "./components/Error";
 import Contact from "./components/Contact";
 import Body from "./components/Body";
 import RestaurantMenu from "./components/RestaurantMenu";
+import Offers from "./components/Offer";
+import Cart from "./components/Cart";
+
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
@@ -36,13 +39,20 @@ const appRouter = createBrowserRouter([
         element: <About />,
         children:[
           {
-            path: "/about/company/:compId",
+            path: "company/:compId", //we can use like this also => /about/company/:comp:Id
             element: <Company/>,
+            children :[
+              {
+                path:'tech', //we can use like this also => /about/company/:comp:Id/tech
+                element :<span>:  Tech</span> //nested children
+              }
+            ]
            
           },
           {
-            path: "/about/myself",
+            path: "myself",
             element: <MySelf />,
+           
            
           }
         ]
@@ -50,6 +60,18 @@ const appRouter = createBrowserRouter([
       {
         path: "/contact",
         element: <Contact />,
+       
+        
+      },
+      {
+        path: "/offers",
+        element: <Offers />,
+       
+        
+      },
+      {
+        path: "/cart",
+        element: <Cart />,
        
         
       },

@@ -203,6 +203,8 @@ scroll-behavior: smooth;
     flex: 1 1 33%;
     transition: all 150ms ease-in-out;
     cursor: pointer;
+    text-decoration: none;
+
  
 
 }

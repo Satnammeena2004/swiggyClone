@@ -7,7 +7,7 @@ const Contact = ()=>{
         <>
     <h1>Contact Us Page</h1>
     <Outlet/>
-    <iframe title="mySite" src='http://localhost:3000/about' width={'10rem'}/>
+    
     </>
         )
 }

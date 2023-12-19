@@ -20,8 +20,8 @@ export const RestaurentCard = memo(
 
   
     return (
-      <Link to={"/restaurant/"+id}>
-        <div className="restaurent-card" key={id}>
+      <Link key={id} className="restaurent-card" to={"/restaurant/"+id}>
+        {/* <div className="restaurent-card" key={id}> */}
           <div
             className="card-image"
             data-offers={
@@ -51,7 +51,7 @@ export const RestaurentCard = memo(
               <MdLocationPin style={{color: "green"}} />{" "}
             </h5>
           </div>
-        </div>
+        {/* </div> */}
      </Link>
     );
   }
@@ -73,7 +73,7 @@ const Restaurents = ({
     <>
       <h1>Top restaurant chains in Kota</h1>
       <div className="restaurents">
-        <Link to={"/restaurant/12233"}>GO</Link>
+      
         {ALL_DATA.length > 0
           ? restaurentsList
               ?.slice(0, 6 + addMuch)
