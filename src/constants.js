@@ -1,5 +1,13 @@
+
+export const IMAGE_URL = 'https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_850,h_504/';
+export const RESTAURANT_MENU_IMG = "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_208,h_208,c_fit/"
+export const RESTAURANT_MENU_URL = "https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=25.2138156&lng=75.8647527&restaurantId=";
+
+export const NOT_AVAILABLE_IMG  = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRMFm8eXQHeAtAFkY2WBztX3RFB5ONe0RAT7g&usqp=CAU"
 async function getdata(){
     const responce = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=25.2137468&lng=75.86483330000002&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING")
+    
+//https://www.swiggy.com/dapi/restaurants/list/v5?lat=25.2137468&lng=75.86483330000002&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING
 
    const res = await responce.json()
  return res.data.cards.map((e)=>e.card.card?.gridElements?.infoWithStyle)
