@@ -1,4 +1,7 @@
 import {Outlet,useParams} from 'react-router-dom'
+import ClassProfile from '../ClassComponent/ProfileClass'
+import FunctionlProfile from '../components/Profile'
+import { Component } from 'react'
 
 
 function Company(){
@@ -7,22 +10,43 @@ function Company(){
   }
 
 
-function MySelf(){
-    
-    return<h1>About MySelf  </h1>
+
+class About extends Component{
+
+  constructor(props){
+       super(props)
+    console.log("parent - constructor")
+    this.state={
+      count:0
+    }
+
+   
+  
   }
 
-const About = ()=>{
+
+  componentDidMount(){
+    console.log("parent - componentDidMount")
+   
+
+  }
+
+  render(){
+    console.log("parent - render")
 
     return(
-        <>
-        
-        <h1>This is Our About Section</h1>
-        <h2>And using Brouser Router</h2>
-          <Outlet/>
-        </>
-    )
+      <>
+      
+      <h1>This is Our About Section count :{this.state.count}</h1>
+      <h2>And using Brouser Router</h2>
+      <ClassProfile  name="child 1 "/>
+      <ClassProfile  name="child 2 "/>
+    
+      </>
+  )
+  }
+
 }
 
 
-export { About,Company,MySelf};
+export { About,Company};

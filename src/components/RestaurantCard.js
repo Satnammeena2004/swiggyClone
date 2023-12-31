@@ -67,6 +67,7 @@ const Restaurents = ({
   searchString,
 }) => {
 
+  console.log("list",restaurentsList);
 
 
   return (
@@ -87,11 +88,11 @@ const Restaurents = ({
           : Array(6)
               .fill(0)
               .map((e, i) => <Shimmer key={i} />)}
-        {restaurentsList.length > 0 || searchString === "" ? (
+        {/* {restaurentsList.length > 0 || searchString === "" ? (
           ""
         ) : (
           <h1>No match Found "{searchString}"</h1>
-        )}
+        )} */}
       </div>
 
       {restaurentsList.length > 0 ? (

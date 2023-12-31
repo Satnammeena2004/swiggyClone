@@ -15,6 +15,15 @@
  
 }
 
+.shimmer-image::before{
+  content: "";
+  position: absolute;
+  height: 100%;
+  width: 1rem;
+  width: 3rem;
+  background: linear-gradient(90deg, #0000002b, transparent);
+}
+
 .shimmer .shimmer-h1 , .shimmer .shimmer-h2 {
   width: 50%;
   border-radius: 0.3rem;

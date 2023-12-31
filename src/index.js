@@ -2,7 +2,8 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./app";
 import {createBrowserRouter, RouterProvider,useParams} from "react-router-dom";
-import {About,MySelf,Company} from "./components/About";
+import {About,Company} from "./components/About";
+import Profile from "./ClassComponent/ProfileClass";
 import Error from "./components/Error";
 import Contact from "./components/Contact";
 import Body from "./components/Body";
@@ -15,9 +16,9 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 
 /*
        <Header/> // always there
-       <About/> if /about then it render
+       <About/> if /about : then it render
        <Body/>  // see when "/" 
-       <Conatct/> if /contact then it render
+       <Conatct/> if /contact : then it render
        <Footer/>  //always there
 */
 
@@ -50,8 +51,8 @@ const appRouter = createBrowserRouter([
            
           },
           {
-            path: "myself",
-            element: <MySelf />,
+            path: "profile",
+            element: <Profile />,
            
            
           }

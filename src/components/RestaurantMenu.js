@@ -1,84 +1,123 @@
 import {useParams} from "react-router-dom";
-import {useCallback, useEffect, useState} from "react";
-import {NOT_AVAILABLE_IMG, RESTAURANT_MENU_IMG} from "../constants";
+import {useCallback, useEffect, useRef, useState} from "react";
+import {BiSolidUpArrow, BiSolidDownArrow} from "react-icons/bi";
+import {
+  NOT_AVAILABLE_IMG,
+  RESTAURANT_MENU_IMG,
+  RESTAURANT_MENU_URL,
+  specific_Restau
+} from "../constants";
 import "./RestaurantMenu.css";
+import { SiVega } from "react-icons/si";
+
+import Shimmer from './Shimmer';
+
+function MenuItem({card}) {
+  const domRef = useRef(null);
+  const [open,setOpen] = useState(false);
+
+  return (
+    <>
+      <div className="toggle-restaurant"    onClick={() => {
+          
+          if(domRef.current.style.height==="100%"){
+            domRef.current.style.height = "0";
+            setOpen(false);
+          }
+          else{
+            domRef.current.style.height = "100%";
+            setOpen(true);
+          }
+        }}>
+        <h3>{card.title}({card?.itemCards?card.itemCards.length:card.categories.length})</h3>
+    {open? <BiSolidDownArrow />:<BiSolidUpArrow/>}
+      </div>
+
+      {
+        <ul ref={domRef}>
+          {card.itemCards
+            ? card.itemCards.map((ell) => {
+              
+                return (
+                  <li  key={ell.card?.info?.id}>
+                    <div className="restaurant_manu_item_name">
+                      
+                      <h5>{ell.card?.info?.itemAttribute?.vegClassifier==="VEG"?<SiVega style={{color:'green'}}/>:''} </h5>
+                      <span style={{color:'coral'}}>{ell?.card?.info?.isBestseller?'Bestseller':''} </span>
+                      <h5>{ell.card.info.name}</h5>
+                      <h5>₹{(ell.card.info.defaultPrice || ell.card.info.price )/100}</h5>
+                    </div>{" "}
+                    <div className="restaurant_manu_item_img">
+                      <img
+                        src={
+                          ell.card?.info?.imageId
+                            ? RESTAURANT_MENU_IMG + ell.card?.info?.imageId
+                            : NOT_AVAILABLE_IMG
+                        }
+                        alt="..."
+                      />
+                    </div>
+                  </li>
+                );
+              })
+            : card.categories.map((e,i) => <MenuItem key={i} card={e}></MenuItem>)}
+        </ul>
+      }
+
+    </>
+  );
+}
+
 const RestaurantMenu = () => {
   // read dynamic params
 
-  const [restData, setRestData] = useState([]);
+  const [restMenuData, setRestMenuData] = useState([]);
 
   const {resId} = useParams();
 
   const getSpecificRestaurant = useCallback(
     async function getSpecificRestaurant() {
-      const res = await fetch(
-        "https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=25.2138156&lng=75.8647527&restaurantId=" +
-          resId
-      );
-     
-      const json = await res.json();
-      console.log(json.data.cards);
-      //  console.log(json.data.cards[2].groupedCard.cardGroupMap.REGULAR.cards[1].card.card.itemCards);
-      console.log(
-        json.data.cards[2].groupedCard.cardGroupMap.REGULAR.cards.map(
-          (e) => e.card.card
-        )
-      );
-      const rest_data =
-        json.data.cards[2].groupedCard.cardGroupMap.REGULAR.cards.map(
-          (e) => e.card.card
-        );
-      setRestData(rest_data);
-      //   const rest = json.data.cards[2].groupedCard.cardGroupMap.REGULAR.cards.map((e)=>{if(e.card.card?.itemCards){return e.card.card?.itemCards}else{return e.card.card?.categories}})
-      //  console.log(rest);
-      //  console.log(json.data.cards[2].groupedCard.cardGroupMap.REGULAR.cards.map((e)=>e.card.card?.itemCards));
-      //  console.log(json.data.cards[2].groupedCard.cardGroupMap.REGULAR.cards.map((e)=>e.card.card?.categories));
+   try{
+     const responce =await fetch(RESTAURANT_MENU_URL+resId);
+    //  console.log("respoce",responce);
+     const json = await responce.json()
+    //  console.log("mMenu",json.filter((e)=>e.groupedCard));
+     setRestMenuData(json.data.cards);
+     console.log(json.data.cards);
+    }catch(err){
+      console.log("err",err);
+    } 
     },
     [resId]
   );
 
+  
+
   useEffect(() => {
+    // setRestMenuData(JSON.parse(specific_Restau).data.cards);
+    // console.log(JSON.parse(specific_Restau).data.cards);
     getSpecificRestaurant();
   }, [getSpecificRestaurant]);
+
+
+  // console.log(w)
 
   return (
     <div className="restaurant_manu_items">
       <h1>Reastaurent : {resId}</h1>
-      {restData.length > 0
-        ? restData.map((card, i) => {
+     { restMenuData.length > 0?restMenuData.map((e)=><h1>{e?.card?.card?.info?.name}</h1>):''}
+      {restMenuData.length > 0
+        ? restMenuData[2].groupedCard.cardGroupMap.REGULAR.cards.map(
+          (el) => el.card.card
+        )
+        .filter((r) => r.categories || r.itemCards).map((card, i) => {
             return (
-              <div key={i} className="restaurant_manu_item">
-                <h1>{card.title}</h1>
-
-                {
-                
-                
-                
-                /* <ul>
-                  {card.itemCards
-                    ? card.itemCards.map((ell) => {
-                        //    console.log(ell.info?.card?.imageId)
-                        return (
-                          <li key={ell.card?.info?.id}>
-                         
-                            <div className="restaurant_manu_item_name"> {ell.card.info.name}</div>{" "}
-                          <div className="restaurant_manu_item_img" >
-                            <img
-                              src={
-                               ell.card?.info?.imageId?RESTAURANT_MENU_IMG + ell.card?.info?.imageId:NOT_AVAILABLE_IMG
-                              }
-                              alt=".."
-                              />
-                        </div>  
-                          </li>
-                        );
-                      })
-                    : ""}
-                </ul> */}
+              <div key={i} onClick={()=>console.log(card)} className="restaurant_manu_item">
+                <MenuItem key={i} card={card} />
               </div>
             );
           })
-        : ""}
+        :<Shimmer/>}
     </div>
   );
 };

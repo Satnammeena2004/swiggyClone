@@ -4,7 +4,12 @@ const SearchRestaurent = ({ALL_DATA,filterRestaurantList})=>{
 
     const [searchString,setSearchString] = useState('');
   function handleClick(){
-    filterRestaurantList(ALL_DATA[2].restaurants.filter((e)=>e.info.name.toLowerCase().includes(searchString.toLowerCase())).map((e)=>e.info),searchString)
+    try{
+
+      filterRestaurantList(ALL_DATA[2].restaurants.filter((e)=>e.info.name.toLowerCase().includes(searchString.toLowerCase())).map((e)=>e.info),searchString)
+    }catch(err){
+      console.log("search string err",err);
+    }
   }
   
     return (
