@@ -3,13 +3,20 @@ import { useEffect, useState } from "react";
 
 function Profile(props){
     const [count,setCount] = useState(0);
-   console.log("redering-functional"); 
+
    
 
-   useEffect(()=>{
+   useEffect( ()=>{
 console.log("useEffect");
+// const timer = setInterval(()=>console.log("Again!!!!!1"),1000)
+
+  return ()=>{
+    console.log("Return useEffect")
+    // clearInterval(timer);
+  }
    },[])
 
+   console.log("Render")
       return (
         <>
         <h1 style={{color:'lightgreen'}}>Functional Profile {Math.round(Math.random()*10)} </h1>

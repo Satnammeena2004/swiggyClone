@@ -1,50 +1,23 @@
 import Restaurents from "./RestaurantCard";
 import SearchRestaurent from "./SearchRestaurant";
 import {useEffect, useState} from "react";
-import {getdata} from "../constants";
+import {RESTAURENT_URL} from "../constants";
 import RestaurentsCarousel from "./RestaurantCarousel";
+import { filterRestaurant,filterBanner } from "../utils/Helper";
+import useOnline from "../utils/useOnline";
+import useRestaurantData from "../utils/useRestaurantData";
 
-function filterBanner(res) {
-  return res.data.cards
-    .map((cards) => cards?.card?.card?.gridElements?.infoWithStyle?.info)
-    .filter((e) => e !== undefined);
-}
-function filterRestaurant(res) {
-  return res.data?.cards
-    .map((e) => e?.card.card?.gridElements?.infoWithStyle?.restaurants)
-    .filter((e) => e !== undefined)
-    .flat(Infinity);
-}
+
 
 const Body = () => {
   const [addMuch, setAddMuch] = useState(0);
-  const [restaurantBanner, setRestaurantBanner] = useState([]);
-  const [ALL_DATA, setALL_DATA] = useState([]);
   const [searchString, setSearchString] = useState("");
-  const [restaurentsList, setRestaurentsList] = useState([]);
+  const [ALL_DATA,restaurantBanner,restaurentsList,filterRestaurantList,setFilterRestaurantList] = useRestaurantData();
+  const online = useOnline();
 
-  const filterRestaurantList = (restaurentsList, searchString) => {
-    setRestaurentsList([...restaurentsList]);
-    setSearchString(searchString);
-  };
+ 
 
-  useEffect(() => {
-  async  function almostGetting(){
-  try{
-
-    const responce = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=25.2137468&lng=75.86483330000002&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING")
-    const res = await responce.json()
-          console.log("all",res.data?.cards?.map((card)=>card?.card?.card))
-          setRestaurantBanner(filterBanner(res));
-          setRestaurentsList(filterRestaurant(res))
-          setALL_DATA(res.data.cards.map((e)=>e.card.card))
-        }catch(err){
-          console.log("body",err);
-        }  
-    }
-    almostGetting();
-
-  }, []);
+  if(!online){return <h1>🔴 Your Offline,Please Check Your Connection !</h1>}
 
   return (
     <main className="main">
@@ -54,14 +27,17 @@ const Body = () => {
           ALL_DATA={ALL_DATA}
         />
         <SearchRestaurent
+        setQuery={setSearchString}
           ALL_DATA={ALL_DATA}
           restaurentsList={restaurentsList}
-          filterRestaurantList={filterRestaurantList}
+          setFilterRestaurantList={setFilterRestaurantList}
+         
         />
         <Restaurents
-          searchString={searchString}
-          ALL_DATA={ALL_DATA}
+        searchString={searchString}
+           ALL_DATA={ALL_DATA}
           restaurentsList={restaurentsList}
+          filterRestaurantList={filterRestaurantList}
           addMuch={addMuch}
           setAddMuch={setAddMuch}
         />

@@ -13,9 +13,9 @@ const CarouselItems = ({imageId}) => {
   );
 };
 
-const RestaurentsCarousel = ({ALL_DATA,restaurantBanner}) => {
+const RestaurentsCarousel = ({ALL_DATA, restaurantBanner}) => {
   const ref = useRef(null);
-  
+
   return (
     <>
       <div className="restaurents-carousel-heading">
@@ -35,7 +35,9 @@ const RestaurentsCarousel = ({ALL_DATA,restaurantBanner}) => {
       </div>
       <div className="restaurents-carousel" ref={ref}>
         {restaurantBanner.length > 0 ? (
-         restaurantBanner[0].filter((elem)=>elem.entityType === 'BANNER').map((e) => <CarouselItems {...e} key={e.id} />)
+          restaurantBanner[0]
+            .filter((elem) => elem.entityType === "BANNER")
+            .map((e) => <CarouselItems {...e} key={e.id} />)
         ) : (
           <>
             <Shimmer />

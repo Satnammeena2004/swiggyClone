@@ -63,8 +63,22 @@
     overflow: hidden;
     width: 8rem;
     aspect-ratio: 1.2/1;
+position: relative;
+}
+
+.restaurant_manu_item_img::after{
+    content: "Add+";
+    z-index: 2;
+    position: absolute;
+    display: inline-block;
+    background: #bff94ac9;
+    bottom: 4%;
+    left: 25%;
+    padding: 1px 15px;
+    border-radius: 0.3rem;
 
 }
+
 
 .restaurant_manu_item_img img{
     object-fit: cover;

@@ -1,15 +1,29 @@
-import React from "react";
+import React, { lazy, Suspense } from "react";
 import ReactDOM from "react-dom/client";
 import App from "./app";
-import {createBrowserRouter, RouterProvider,useParams} from "react-router-dom";
-import {About,Company} from "./components/About";
+import {createBrowserRouter, RouterProvider, useParams} from "react-router-dom";
+import {About, Company} from "./components/About";
 import Profile from "./ClassComponent/ProfileClass";
 import Error from "./components/Error";
 import Contact from "./components/Contact";
 import Body from "./components/Body";
 import RestaurantMenu from "./components/RestaurantMenu";
 import Offers from "./components/Offer";
-import Cart from "./components/Cart";
+import Shimmer from "./components/Shimmer";
+
+
+
+// Chunking
+//On Demand Loading
+//Lay Loading
+//Code spliting
+//Dynamic import
+//Dynamic bundling
+
+const Cart = lazy(()=>import("./components/Cart"));
+const InstaMart = lazy(()=>import("./components/InstaMart")); 
+
+
 
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
@@ -22,8 +36,6 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
        <Footer/>  //always there
 */
 
-
-
 const appRouter = createBrowserRouter([
   {
     path: "/",
@@ -33,59 +45,49 @@ const appRouter = createBrowserRouter([
       {
         path: "/",
         element: <Body />,
-        
       },
       {
         path: "/about",
         element: <About />,
-        children:[
+        children: [
           {
             path: "company/:compId", //we can use like this also => /about/company/:comp:Id
-            element: <Company/>,
-            children :[
+            element: <Company />,
+            children: [
               {
-                path:'tech', //we can use like this also => /about/company/:comp:Id/tech
-                element :<span>:  Tech</span> //nested children
-              }
-            ]
-           
+                path: "tech", //we can use like this also => /about/company/:comp:Id/tech
+                element: <span>: Tech</span>, //nested children
+              },
+            ],
           },
           {
             path: "profile",
             element: <Profile />,
-           
-           
-          }
-        ]
+          },
+        ],
       },
       {
         path: "/contact",
         element: <Contact />,
-       
-        
       },
       {
         path: "/offers",
         element: <Offers />,
-       
-        
+      },
+      {
+        path: "/instamart",
+        element:<Suspense fallback={<Shimmer/>}> <InstaMart /></Suspense>,
       },
       {
         path: "/cart",
-        element: <Cart />,
-       
-        
+        element: <Suspense fallback={<Shimmer/>}> <Cart /></Suspense>,
       },
       {
         path: "/restaurant/:resId",
         element: <RestaurantMenu />,
-       
       },
-      
-    
     ],
-
-  }
+  },
 ]);
 
 root.render(<RouterProvider router={appRouter} />);
