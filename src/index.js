@@ -1,7 +1,7 @@
 import React, { lazy, Suspense } from "react";
 import ReactDOM from "react-dom/client";
 import App from "./app";
-import {createBrowserRouter, RouterProvider, useParams} from "react-router-dom";
+import {createBrowserRouter, RouterProvider} from "react-router-dom";
 import {About, Company} from "./components/About";
 import Profile from "./ClassComponent/ProfileClass";
 import Error from "./components/Error";

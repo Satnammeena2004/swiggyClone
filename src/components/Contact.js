@@ -1,19 +1,12 @@
-import {Outlet, useParams, useLocation, useMatches} from "react-router-dom";
-import useStorage from "../utils/useStorage";
-
-
-
-
-
+import {Outlet} from "react-router-dom";
 
 const Contact = () => {
-  const param = useParams();
-  const location = useLocation();
-  const match = useMatches();
+  // const param = useParams();
+  // const location = useLocation();
+  // const match = useMatches();
   // const  [getItems,setItems,showAllItems,seeAllKeys,seeAllValues] = useStorage();
 
-
-  console.log("contact Rendring 🚀")
+  console.log("contact Rendring 🚀");
   // console.log(match);
   // console.log(location);
   // console.log(param);
