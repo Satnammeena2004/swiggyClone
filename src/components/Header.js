@@ -27,10 +27,20 @@ const Title = () => {
     );
   };
   
+
+function LogAndSign(){
+  const [isLoggIn,setIsLoggIn] = useState(false)
+
+
+  return(
+    <button className='logIn-btn' onClick={()=>setIsLoggIn(!isLoggIn)}>{isLoggIn?"Sign":'Log'} In</button>
+
+  )
+    
+}
   
   
   const Header = () => {
-    const [isLoggIn,setIsLoggIn] = useState(false)
     return (
       <header className="header">
         <Title />
@@ -55,10 +65,13 @@ const Title = () => {
         <Link to="/offers">   <BiSolidOffer /> Offer</Link> 
           </li>
           <li>
+        <Link to="/instamart">   <BiSolidOffer /> Instamart</Link> 
+          </li>
+          <li>
          <Link to="/cart">  <FiShoppingCart /> Cart</Link> 
           </li>
         </ul>
-        <button className='logIn-btn' onClick={()=>setIsLoggIn(!isLoggIn)}>{isLoggIn?"Sign":'Log'} In</button>
+        <LogAndSign/>
       </header>
     );
   };

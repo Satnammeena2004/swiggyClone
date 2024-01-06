@@ -1,18 +1,32 @@
-import { useState } from "react";
+import {useState} from "react";
 
-const SearchRestaurent = ({ALL_DATA,filterRestaurantList})=>{
+const SearchRestaurent = ({restaurentsList,setFilterRestaurantList,setQuery}) => {
 
-    const [searchString,setSearchString] = useState('');
-  function handleClick(){
-    filterRestaurantList(ALL_DATA[2].restaurants.filter((e)=>e.info.name.toLowerCase().includes(searchString.toLowerCase())).map((e)=>e.info),searchString)
+  const [searchString, setSearchString] = useState("");
+  // console.log("restaurentsList",restaurentsList)
+  function handleClick() {
+    setQuery(searchString)
+    try {
+      setFilterRestaurantList(restaurentsList.filter(((restaurant)=>restaurant.info.name.toLowerCase().includes(searchString.toLowerCase()))))
+    } catch (err) {
+      console.log("search string err", err);
+    }
   }
-  
-    return (
-      <div className="search-bar">
-      <input value={searchString} onChange={(e)=>{setSearchString(e.target.value)}} className="search-restaurent" placeholder="Name" type="text" />
+
+  return (
+    <div className="search-bar">
+      <input
+        value={searchString}
+        onChange={(e) => {
+          setSearchString(e.target.value);
+        }}
+        className="search-restaurent"
+        placeholder="Name"
+        type="text"
+      />
       <button onClick={handleClick}>Search</button>
-      </div>
-    )
-  }
+    </div>
+  );
+};
 
 export default SearchRestaurent;

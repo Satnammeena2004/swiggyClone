@@ -1,6 +1,6 @@
 body ,html {
   height: 100vh;
-  font-family:  'Poppins';
+  /* font-family:  'Poppins'; */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }

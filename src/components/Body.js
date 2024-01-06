@@ -1,40 +1,52 @@
 import Restaurents from "./RestaurantCard";
 import SearchRestaurent from "./SearchRestaurant";
-import { useEffect,useState } from "react";
-import {getdata } from "../constants";
-import RestaurentsCarousel from './RestaurantCarousel'
+import {useState} from "react";
 
+import RestaurentsCarousel from "./RestaurantCarousel";
+
+import useOnline from "../utils/useOnline";
+import useRestaurantData from "../utils/useRestaurantData";
 
 const Body = () => {
   const [addMuch, setAddMuch] = useState(0);
-  const [ALL_DATA,setALL_DATA] = useState([]);
-  const [searchString,setSearchString]  = useState('');
-  const [restaurentsList, setRestaurentsList] = useState([]);
+  const [searchString, setSearchString] = useState("");
+  const [
+    ALL_DATA,
+    restaurantBanner,
+    restaurentsList,
+    filterRestaurantList,
+    setFilterRestaurantList,
+  ] = useRestaurantData();
+  const online = useOnline();
 
- const filterRestaurantList  = (restaurentsList,searchString)=>{
-        setRestaurentsList([...restaurentsList]);
-        setSearchString(searchString)
- }
+  if (!online) {
+    return <h1>🔴 Your Offline,Please Check Your Connection !</h1>;
+  }
 
-  useEffect(() => {
-  async  function almostGetting(){
-          const res = await getdata();
-          console.log("restuatrena",res[2]?.restaurants?.map((el)=>el.info));
-          setRestaurentsList(res[2]?.restaurants);
-          setALL_DATA(res)
-    }
-    almostGetting();
-  }, []);
-
-    return (
+  return (
     <main className="main">
       <div>
-      <RestaurentsCarousel   ALL_DATA={ALL_DATA} />
-      <SearchRestaurent  ALL_DATA={ALL_DATA} restaurentsList={restaurentsList} filterRestaurantList={filterRestaurantList}  />
-      <Restaurents searchString={searchString}  ALL_DATA={ALL_DATA} restaurentsList={restaurentsList} addMuch={addMuch} setAddMuch={setAddMuch} />
+        <RestaurentsCarousel
+          restaurantBanner={restaurantBanner}
+          ALL_DATA={ALL_DATA}
+        />
+        <SearchRestaurent
+          setQuery={setSearchString}
+          ALL_DATA={ALL_DATA}
+          restaurentsList={restaurentsList}
+          setFilterRestaurantList={setFilterRestaurantList}
+        />
+        <Restaurents
+          searchString={searchString}
+          ALL_DATA={ALL_DATA}
+          restaurentsList={restaurentsList}
+          filterRestaurantList={filterRestaurantList}
+          addMuch={addMuch}
+          setAddMuch={setAddMuch}
+        />
       </div>
     </main>
-    );
-  };
+  );
+};
 
 export default Body;
