@@ -1,5 +1,5 @@
 import {useRef} from "react";
-import "../app.css";
+import "../App.css";
 import {IMAGE_URL} from "../constants";
 import Shimmer from "./Shimmer";
 import {IoMdArrowForward} from "react-icons/io";

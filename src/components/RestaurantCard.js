@@ -1,4 +1,4 @@
-import "../app.css";
+import "../App.css";
 import {FaStar} from "react-icons/fa";
 import {MdLocationPin} from "react-icons/md";
 import {memo, useEffect} from "react";
