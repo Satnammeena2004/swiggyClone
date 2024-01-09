@@ -15,6 +15,9 @@ import RestaurantMenu from "./components/RestaurantMenu";
 import Offers from "./components/Offer";
 import Cart from "./components/Cart";
 import InstaMart from './components/InstaMart';
+// import './index.css'
+
+// document.onprogress = (e)=>console.log("hello",e)
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 

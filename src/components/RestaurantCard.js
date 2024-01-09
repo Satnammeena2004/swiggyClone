@@ -1,10 +1,9 @@
-import "../App.css";
+// import "../App.css";
 import {FaStar} from "react-icons/fa";
 import {MdLocationPin} from "react-icons/md";
 import {memo} from "react";
 import Shimmer from "./Shimmer";
 import {Link} from "react-router-dom";
-
 
 export const RestaurentCard = memo(
   ({
@@ -17,11 +16,15 @@ export const RestaurentCard = memo(
     cuisines,
     locality,
   }) => {
+    // console.log(name);
     return (
-      <Link key={id} className="restaurent-card" to={"/restaurant/" + id}>
-     
+      <Link
+        key={id}
+        className="restaurent-card min-w-56 w-3/12"
+        to={"/restaurant/" + id}
+      >
         <div
-          className="card-image"
+          className="card-image h-40 w-full rounded-lg overflow-hidden"
           data-offers={
             aggregatedDiscountInfoV3 &&
             aggregatedDiscountInfoV3?.header +
@@ -30,6 +33,7 @@ export const RestaurentCard = memo(
           }
         >
           <img
+            className="object-cover w-full h-full "
             src={
               `https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/` +
               cloudinaryImageId
@@ -38,18 +42,17 @@ export const RestaurentCard = memo(
           />
         </div>
         <div className="card-content">
-          <h1>{name}</h1>
-          <h3>
+          <h1 className="truncate font-medium py-px 	">{name}</h1>
+          <h3 className="flex items-center gap-1 py-px text-sm	">
             <FaStar /> {avgRating} | {sla.slaString}{" "}
           </h3>
 
-          <h5 style={{wordBreak: "break-word"}}>{cuisines.slice(0, 1)}..</h5>
-          <h5>
-            {locality}
+          <h5 className=" truncate py-px text-sm	">{cuisines.join(", ")}</h5>
+          <h5 className="flex gap-1 items-center py-px text-sm	">
             <MdLocationPin style={{color: "green"}} />{" "}
+            {locality}
           </h5>
         </div>
-     
       </Link>
     );
   }
@@ -60,26 +63,33 @@ const Restaurents = ({
   addMuch,
   setAddMuch,
   filterRestaurantList,
-  searchString
+  searchString,
 }) => {
   console.log("filterRestaurantList", filterRestaurantList);
 
   return (
     <>
       <h1>Top restaurant chains in Kota</h1>
-    {searchString!=="" && filterRestaurantList.length===0?<h2>Search Result Not Found "{searchString }"</h2>:''}  
-      <div className="restaurents">
-        {ALL_DATA.length > 0
-          ? filterRestaurantList
-              ?.slice(0, 6 + addMuch)
-              .map((e) => <RestaurentCard key={e.info.id} {...e.info} />)
-          : Array(6)
-              .fill(0)
-              .map((e, i) => <Shimmer key={i} />)}
+      {searchString !== "" && filterRestaurantList.length === 0 ? (
+        <h2>Search Result Not Found "{searchString}"</h2>
+      ) : (
+        ""
+      )}
+
+      <div className="restaurents ">
+        <div className="flex flex-wrap gap-12 px-10 mx-auto  py-8 justify-center  w-11/12">
+          {ALL_DATA.length > 0
+            ? filterRestaurantList
+                ?.slice(0, 6 + addMuch)
+                .map((e) => <RestaurentCard key={e.info.id} {...e.info} />)
+            : Array(6)
+                .fill(0)
+                .map((e, i) => <Shimmer key={i} />)}
+        </div>
       </div>
 
       {filterRestaurantList.length > 0 ? (
-        <div style={{textAlign: "center", padding: "1rem"}}>
+        <div className="text-center p-4">
           <button
             className="more-restaurant-btn"
             onClick={() => setAddMuch((n) => n + 3)}

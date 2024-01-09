@@ -1,6 +1,7 @@
 import {Outlet, useParams} from "react-router-dom";
 import ClassProfile from "../ClassComponent/ProfileClass";
 import React, {Component, useEffect, useState, memo} from "react";
+import UserContext from "../utils/UserContext";
 
 function Company() {
   const {compId} = useParams();
@@ -132,6 +133,9 @@ class About extends Component {
       <>
         <h1>This is Our About Section count</h1>
         <h2>And using Brouser Router</h2>
+        <UserContext.Consumer>
+        {({user})=><span className="font-bold font-[Kalnia]">{user.name+'-'+user.email}</span>}
+        </UserContext.Consumer>
         <ClassProfile name="child 1 " />
         <Outlet/>
       </>

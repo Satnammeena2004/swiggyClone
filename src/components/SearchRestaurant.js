@@ -1,7 +1,6 @@
 import {useState} from "react";
 
 const SearchRestaurent = ({restaurentsList,setFilterRestaurantList,setQuery}) => {
-
   const [searchString, setSearchString] = useState("");
   // console.log("restaurentsList",restaurentsList)
   function handleClick() {
@@ -14,16 +13,18 @@ const SearchRestaurent = ({restaurentsList,setFilterRestaurantList,setQuery}) =>
   }
 
   return (
-    <div className="search-bar">
+    <div className="search-bar flex justify-center">
       <input
         value={searchString}
         onChange={(e) => {
           setSearchString(e.target.value);
         }}
-        className="search-restaurent"
+        className="search-restaurent border-2"
         placeholder="Name"
         type="text"
       />
+     
+      
       <button onClick={handleClick}>Search</button>
     </div>
   );
