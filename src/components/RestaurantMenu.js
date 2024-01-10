@@ -14,11 +14,11 @@ import Shimmer from "./Shimmer";
 const MenuItem = memo(({card})=> {
   const domRef = useRef(null);
   const [open, setOpen] = useState(false);
-
+// console.log("card",card)
   return (
     <>
       <div
-        className="toggle-restaurant"
+        className="toggle-restaurant flex justify-between p-2 "
         onClick={() => {
           if (domRef.current.style.height === "100%") {
             domRef.current.style.height = "0";
@@ -37,11 +37,11 @@ const MenuItem = memo(({card})=> {
       </div>
 
       {
-        <ul ref={domRef}>
+        <ul ref={domRef} className="h-0 overflow-hidden flex flex-col gap-4 border bg-stone-50 has-[ul]:text-sm  has-[ul]:mx-2">
           {card.itemCards
             ? card.itemCards.map((ell) => {
                 return (
-                  <li key={ell.card?.info?.id}>
+                  <li key={ell.card?.info?.id} className="flex justify-between  p-2 items-center">
                     <div className="restaurant_manu_item_name">
                       <h5>
                         {ell.card?.info?.itemAttribute?.vegClassifier ===
@@ -61,8 +61,8 @@ const MenuItem = memo(({card})=> {
                           100}
                       </h5>
                     </div>{" "}
-                    <div className="restaurant_manu_item_img">
-                      <img
+                    <div className="restaurant_manu_item_img w-36 h-36 relative">
+                      <img className="object-cover h-full w-full rounded-md"
                         src={
                           ell.card?.info?.imageId
                             ? RESTAURANT_MENU_IMG + ell.card?.info?.imageId
@@ -70,6 +70,7 @@ const MenuItem = memo(({card})=> {
                         }
                         alt="..."
                       />
+                      <span className="absolute bottom-4 left-10 bg-lime-200 px-2 rounded-lg text-center">ADD +</span>
                     </div>
                   </li>
                 );
@@ -167,14 +168,14 @@ const RestaurantMenu = () => {
 
   
   return (
-    <div className="restaurant_manu_items">
+    <div className="restaurant_manu_items flex flex-col items-center gap-y-2 font-[Poppins]">
       <h1>Reastaurent : {resId}</h1>
       
       {restMenuData.length > 0
         ? restMenuData.map((e) => <h1 key={e?.card?.card?.info?.id}>{e?.card?.card?.info?.name}</h1>)
         : ""}
       {restMenuData.length > 0 ? (
-        restMenuData[2].groupedCard.cardGroupMap.REGULAR.cards
+        restMenuData[2].groupedCard?.cardGroupMap?.REGULAR?.cards
           .map((el) => el.card.card)
           .filter((r) => r.categories || r.itemCards)
           .map((card, i) => {
@@ -182,7 +183,7 @@ const RestaurantMenu = () => {
               <div
                 key={i}
                 onClick={() => console.log(card)}
-                className="restaurant_manu_item"
+                className="group restaurant_manu_item p-3 border w-2/4 font-medium"
               >
                 <MenuItem key={i} card={card} />
               </div>

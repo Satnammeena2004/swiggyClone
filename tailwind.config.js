@@ -5,9 +5,6 @@ module.exports = {
   ],
   theme: {
     extend: {},
-    fontFamily:{
-      'mySans':['Kalnia','Poppins']
-    }
   },
   plugins: [],
 }

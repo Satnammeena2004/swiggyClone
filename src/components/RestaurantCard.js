@@ -20,7 +20,7 @@ export const RestaurentCard = memo(
     return (
       <Link
         key={id}
-        className="restaurent-card min-w-56 w-3/12"
+        className="restaurent-card min-w-52 w-full shadow-md p-4 rounded "
         to={"/restaurant/" + id}
       >
         <div
@@ -42,7 +42,7 @@ export const RestaurentCard = memo(
           />
         </div>
         <div className="card-content">
-          <h1 className="truncate font-medium py-px 	">{name}</h1>
+          <h1 className="truncate  py-px m-px font-medium">{name}</h1>
           <h3 className="flex items-center gap-1 py-px text-sm	">
             <FaStar /> {avgRating} | {sla.slaString}{" "}
           </h3>
@@ -77,7 +77,7 @@ const Restaurents = ({
       )}
 
       <div className="restaurents ">
-        <div className="flex flex-wrap gap-12 px-10 mx-auto  py-8 justify-center  w-11/12">
+        <div className="grid grid-cols-[repeat(auto-fit,minmax(200px,1fr))] gap-6 px-10 mx-auto  py-8 j  w-9/12 font-[Poppins]">
           {ALL_DATA.length > 0
             ? filterRestaurantList
                 ?.slice(0, 6 + addMuch)

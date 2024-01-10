@@ -7,12 +7,6 @@ import UserContext from "./utils/UserContext";
 import { useState } from "react";
 
 
-
-
-
-
-
-
 //<Outlet/> componenet  
 
 const AppLayout = () => {

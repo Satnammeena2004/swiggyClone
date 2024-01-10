@@ -1,5 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
+// import './index.css'
 import App from "./app";
 import {
   BrowserRouter,
@@ -15,7 +16,6 @@ import RestaurantMenu from "./components/RestaurantMenu";
 import Offers from "./components/Offer";
 import Cart from "./components/Cart";
 import InstaMart from './components/InstaMart';
-// import './index.css'
 
 // document.onprogress = (e)=>console.log("hello",e)
 
