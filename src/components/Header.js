@@ -44,7 +44,7 @@ function LogAndSign(){
   const Header = () => {
   const {user} = useContext(UserContext);
     return (
-      <header className="header flex justify-between items-center px-4 py-1 font-medium">
+      <header className="header flex justify-between items-center px-4 py-1 font-medium text-gray-800 font-[Poppins]">
         <Title />
         <ul className="header-list  gap-x-8 hidden sm:flex">
           <li>

@@ -4,6 +4,8 @@ import {MdLocationPin} from "react-icons/md";
 import {memo} from "react";
 import Shimmer from "./Shimmer";
 import {Link} from "react-router-dom";
+import { RESTAURANT_IMG_URL } from "../constants";
+
 
 export const RestaurentCard = memo(
   ({
@@ -15,16 +17,17 @@ export const RestaurentCard = memo(
     sla,
     cuisines,
     locality,
+    className
   }) => {
     // console.log(name);
     return (
       <Link
         key={id}
-        className="restaurent-card min-w-52 w-full shadow-md p-4 rounded "
+        className={className?className:"card min-w-52 w-full shadow-md p-2 rounded hover:scale-90 transition-transform "}
         to={"/restaurant/" + id}
       >
         <div
-          className="card-image h-40 w-full rounded-lg overflow-hidden"
+          className="card-image h-40  rounded-lg overflow-hidden"
           data-offers={
             aggregatedDiscountInfoV3 &&
             aggregatedDiscountInfoV3?.header +
@@ -33,21 +36,22 @@ export const RestaurentCard = memo(
           }
         >
           <img
-            className="object-cover w-full h-full "
+            className="object-cover w-full h-full order-first "
             src={
-              `https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/` +
+              
+              RESTAURANT_IMG_URL +
               cloudinaryImageId
             }
             alt="card-img"
           />
         </div>
-        <div className="card-content">
-          <h1 className="truncate  py-px m-px font-medium">{name}</h1>
+        <div className={className?"order-first basis-3/4":''}>
+          <h1 className={className?"truncate py-px m-px font-medium text-3xl mb-2 text-balance":"truncate py-px m-px font-medium"}>{name}</h1>
           <h3 className="flex items-center gap-1 py-px text-sm	">
-            <FaStar /> {avgRating} | {sla.slaString}{" "}
+            <FaStar /> {avgRating} | {sla?.slaString}{" "}
           </h3>
 
-          <h5 className=" truncate py-px text-sm	">{cuisines.join(", ")}</h5>
+          <h5 className=" truncate py-px text-sm	">{cuisines?.join(", ")}</h5>
           <h5 className="flex gap-1 items-center py-px text-sm	">
             <MdLocationPin style={{color: "green"}} />{" "}
             {locality}
@@ -77,7 +81,7 @@ const Restaurents = ({
       )}
 
       <div className="restaurents ">
-        <div className="grid grid-cols-[repeat(auto-fit,minmax(200px,1fr))] gap-6 px-10 mx-auto  py-8 j  w-9/12 font-[Poppins]">
+        <div className="grid grid-cols-[repeat(auto-fit,minmax(180px,1fr))] gap-14 px-10 mx-auto  py-8 j  w-9/12 font-[Poppins]">
           {ALL_DATA.length > 0
             ? filterRestaurantList
                 ?.slice(0, 6 + addMuch)

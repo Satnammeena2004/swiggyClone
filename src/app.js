@@ -16,7 +16,7 @@ const AppLayout = () => {
      {/* <UserContext.Provider children={[<Header/>,<main><Outlet/></main>,<Footer/>]} value={{user:user,setUser:setUser}}/> */}
      <UserContext.Provider value={{user:user,setUser:setUser}}>
      <Header />
-      <main className="mb-3">
+      <main className="mb-3 font-[Poppins]">
       
       <Outlet/>
       </main>
