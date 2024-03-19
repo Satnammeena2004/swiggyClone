@@ -4,8 +4,7 @@ import {MdLocationPin} from "react-icons/md";
 import {memo} from "react";
 import Shimmer from "./Shimmer";
 import {Link} from "react-router-dom";
-import { RESTAURANT_IMG_URL } from "../constants";
-
+import {RESTAURANT_IMG_URL} from "../constants";
 
 export const RestaurentCard = memo(
   ({
@@ -17,44 +16,52 @@ export const RestaurentCard = memo(
     sla,
     cuisines,
     locality,
-    className
+    className,
   }) => {
     // console.log(name);
     return (
       <Link
         key={id}
-        className={className?className:"card min-w-52 w-full shadow-md p-2 rounded hover:scale-90 transition-transform "}
+        className={
+          className
+            ? className
+            : "card min-w-52 w-full shadow-md p-2 rounded hover:scale-90 transition-transform "
+        }
         to={"/restaurant/" + id}
       >
         <div
-          className="card-image h-40  rounded-lg overflow-hidden"
-          data-offers={
-            aggregatedDiscountInfoV3 &&
-            aggregatedDiscountInfoV3?.header +
-              " " +
-              aggregatedDiscountInfoV3?.subHeader
-          }
+          className="card-image h-40  bg-gradient-to-b from-transparent  to-neutral-800 from-10%  rounded-lg overflow-hidden relative"
+         
         >
           <img
-            className="object-cover w-full h-full order-first "
-            src={
-              
-              RESTAURANT_IMG_URL +
-              cloudinaryImageId
-            }
+            className="object-cover w-full h-full order-first relative  -z-10"
+            src={RESTAURANT_IMG_URL + cloudinaryImageId}
             alt="card-img"
           />
+          <span className="absolute bottom-0 left-4 text-xl font-bold tracking-tight text-slate-100">
+            {aggregatedDiscountInfoV3 &&
+              aggregatedDiscountInfoV3?.header +
+                " " +
+                aggregatedDiscountInfoV3?.subHeader}
+          </span>
         </div>
-        <div className={className?"order-first basis-3/4":''}>
-          <h1 className={className?"truncate py-px m-px font-medium text-3xl mb-2 text-balance":"truncate py-px m-px font-medium"}>{name}</h1>
+        <div className={className ? "order-first basis-3/4" : ""}>
+          <h1
+            className={
+              className
+                ? "truncate py-px m-px font-medium text-3xl mb-2 text-balance"
+                : "truncate py-px m-px font-medium "
+            }
+          >
+            {name}
+          </h1>
           <h3 className="flex items-center gap-1 py-px text-sm	">
             <FaStar /> {avgRating} | {sla?.slaString}{" "}
           </h3>
 
           <h5 className=" truncate py-px text-sm	">{cuisines?.join(", ")}</h5>
           <h5 className="flex gap-1 items-center py-px text-sm	">
-            <MdLocationPin style={{color: "green"}} />{" "}
-            {locality}
+            <MdLocationPin style={{color: "green"}} /> {locality}
           </h5>
         </div>
       </Link>

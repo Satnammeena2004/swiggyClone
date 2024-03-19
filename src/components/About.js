@@ -47,39 +47,9 @@ function Company() {
 //   }
 // }
 
-// class Child extends React.Component{
-
-//   constructor(props){
-//     super(props);
-//     console.log("Constructor",this.props.name)
-//     // console.log("Child",props);
-//     this.state = {
-//       child_count:10
-//     }
-
-//   }
-
-// componentDidMount(){
-//   console.log("componentDidMount -",this.props.name)
-// }
-// componentDidUpdate(){
-//   console.log("componentDidUpdate -",this.props.name)
-// }
-// componentWillUnmount(){
-//   console.log("componentWillUnmount -",this.props.name)
-// }
-
-//   render(){
-//     console.log("Rendering",this.props.name)
-//     return(
-//       <h2 onClick={()=>this.setState({child_count:1000})}>Rendering {this.props.name},  {this.state.child_count} </h2>
-//     )
-//   }
-// }
 
 function Parent() {
   const [count, setCount] = useState(0);
-
   useEffect(() => {
     console.log("after Rendring,Effect");
   }, []);
@@ -96,59 +66,193 @@ function Parent() {
   );
 }
 
-const Child = memo(function Child({name}) {
+// const Child = memo(function Child({name}) {
+//   const [count, setCount] = useState(0);
+
+//   useEffect(() => {
+//     console.log("after Rendring,Effect,", name);
+//   }, [name]);
+
+//   console.log("Rendering", name);
+
+//   return (
+//     <h1
+//       onClick={() => {
+//         setCount(10);
+//       }}
+//     >
+//       Functional {name} :{count}
+//     </h1>
+//   );
+// });
+
+export function FuntionalComp2() {
   const [count, setCount] = useState(0);
-
   useEffect(() => {
-    console.log("after Rendring,Effect,", name);
-  }, [name]);
-
-  console.log("Rendering", name);
+    console.log("useEffect");
+  }, []);
+  console.log("Funtional Renders");
 
   return (
-    <h1
-      onClick={() => {
-        setCount(10);
-      }}
-    >
-      Functional {name} :{count}
-    </h1>
+    <div className="border bg-yellow-500">
+      <h1>Funtional componenet</h1>
+      <h3>count:{count}</h3>
+      <button
+        className="bg-blue-300 p-2 m-2 border"
+        onClick={() => setCount(count + 1)}
+      >
+        Count+1
+      </button>
+    </div>
   );
-});
+}
 
-class About extends Component {
+export function FuntionalComp() {
+  const [count, setCount] = useState(0);
+  const [count2, setCount2] = useState(0);
+  useEffect(() => {
+    console.log("useEffect",count)
+
+  }, [count]); 
+  console.log("Funtional Renders",count);
+ 
+  return (
+    <div className="border bg-yellow-500">
+      <h1>Funtional componenet</h1>
+      <h3>count:{count}</h3>
+      <button
+        className="bg-blue-300 p-2 m-2 border"
+        onClick={() => {setCount(count + 1);setCount2(1);console.log("onClick",count,count2)}}
+      >
+        Count+1
+      </button>
+    </div>
+  );
+}
+
+
+class Child extends React.Component{
+
+  // eslint-disable-next-line no-useless-constructor
+  constructor(props){
+    super(props);
+    console.log(`\t${this.props.name}-constructor`)
+    this.state={
+      count:1
+    }
+  }
+
+async componentDidMount(){
+  console.log(`\t${this.props.name}-componentDidMount`);
+  this.setState({
+    count:10
+  })
+}
+
+componentDidUpdate(){
+  console.log(`\t${this.props.name}-componentDisUpdate`);
+}
+
+componentWillUnmount(){
+  console.log(`\t${this.props.name}-componentWillUnmount`);
+
+}
+
+
+  render(){
+    console.log(`\t${this.props.name}-render`)
+    return(
+      <>
+      <h2>Rendering Child</h2>
+      <button className="border bg-slate-500">{this.state.count}</button>
+      </>
+    )
+  }
+}
+
+
+
+class About extends React.Component {
+  // eslint-disable-next-line no-useless-constructor
   constructor(props) {
     super(props);
-    console.log("parent - constructor");
+    this.state = {
+      count: 1,
+      count2: 2,
+    };
+    console.log("Parent - Constructor");
   }
 
   componentDidMount() {
-    console.log("parent - componentDidMount");
+    console.log("Parent - componentDidMount");
+   
+    
+  }
+  componentDidUpdate(){
+    console.log("Parent - componenetDidUpdate");
+  }
+  componentWillUnmount(){
+    console.log("Parent - componentWillUnmounte");
   }
 
   render() {
-    console.log("parent - render");
-
+    console.log("Parent- render");
     return (
       <>
-        <h1>This is Our About Section count</h1>
-        <h2>And using Brouser Router</h2>
-        <UserContext.Consumer>
-        {({user})=><span className="font-bold font-[Kalnia]">{user.name+'-'+user.email}</span>}
-        </UserContext.Consumer>
-        <ClassProfile name="child 1 " />
-        <Outlet/>
+        <div className="p-2 border bg-amber-200">
+          <h1>I am a Class based component</h1>
+          <h2>name:{this.props.name}</h2>
+          <h3>count :{this.state.count} </h3>
+          <h3>count :{this.state.count2}</h3>
+          <button
+            className="bg-blue-300 p-2 m-2 border"
+            onClick={() => this.setState({count: 2})}
+          >
+            count1
+          </button>
+          <button
+            className="bg-blue-300 p-2 m-2 border"
+            onClick={() => this.setState({count2: 4})}
+          >
+            count2
+          </button>
+          <Child  name="Child 1"/>
+          <Child  name="Child 2"/>
+        </div>
       </>
     );
   }
 }
 
-function MySelf(){
+// class About extends Component {
+//   constructor(props) {
+//     super(props);
+//     console.log("parent - constructor");
+//   }
 
+//   componentDidMount() {
+//     console.log("parent - componentDidMount");
+//   }
 
-  return (
-    <h1>Myself</h1>
-  )
+//   render() {
+//     console.log("parent - render");
+
+//     return (
+//       <>
+//         <h1>This is Our About Section count</h1>
+//         <h2>And using Brouser Router</h2>
+//         <UserContext.Consumer>
+//         {({user})=><span className="font-bold font-[Kalnia]">{user.name+'-'+user.email}</span>}
+//         </UserContext.Consumer>
+//         <ClassProfile name="child 1 " />
+//         <Outlet/>
+//       </>
+//     );
+//   }
+// }
+
+function MySelf() {
+  return <h1>Myself</h1>;
 }
 
-export {About, Company,MySelf, Parent};
+export {About, Company, MySelf, Parent};

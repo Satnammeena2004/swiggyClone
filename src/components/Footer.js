@@ -7,8 +7,7 @@ const Footer = () => {
     return (
       <footer className="footer border-2 rounded-md flex justify-center gap-5 font-bold font-[Kalnia]  w-full ">
       <p >Footer</p>
-      <p >{user.name+'-'+user.email}</p>
-      
+  
       </footer>
     )
   };

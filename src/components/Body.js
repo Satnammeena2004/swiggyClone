@@ -19,9 +19,9 @@ const Body = () => {
   ] = useRestaurantData();
   const online = useOnline();
 
-  // if (!online) {
-  //   return <h1>🔴 Your Offline,Please Check Your Connection !</h1>;
-  // }
+  if (!online) {
+    return <h1>🔴 Your Offline,Please Check Your Connection !</h1>;
+  }
 
   return (
     <main className="main">

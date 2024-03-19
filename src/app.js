@@ -1,28 +1,39 @@
-
 // import "./App.css";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
-import {Outlet} from 'react-router-dom'
+import {Outlet} from "react-router-dom";
 import UserContext from "./utils/UserContext";
-import { useState } from "react";
+import {Suspense, createContext, lazy, useContext, useState} from "react";
+import {Provider} from "react-redux";
+import store from "./utils/store";
+import LogSignPage from "./components/LogSignPage";
 
+//<Outlet/> componenet
 
-//<Outlet/> componenet  
+export const UserAuth = createContext(false);
+
 
 const AppLayout = () => {
-  const [user,setUser] = useState({name:"Satnam Meena",email:'satnam@gmail.com'});
+  const [user, setUser] = useState({
+    name: "Satnam Meena",
+    email: "satnam@gmail.com",
+  });
+
+  const [userAuthentication,setUserAuthentication] = useState(false)
   return (
     <>
-     {/* <UserContext.Provider children={[<Header/>,<main><Outlet/></main>,<Footer/>]} value={{user:user,setUser:setUser}}/> */}
-     <UserContext.Provider value={{user:user,setUser:setUser}}>
-     <Header />
-      <main className="mb-3 font-[Poppins]">
-      
-      <Outlet/>
-      </main>
-    <Footer />
-    </UserContext.Provider>
-     
+      {/* <UserContext.Provider children={[<Header/>,<main><Outlet/></main>,<Footer/>]} value={{user:user,setUser:setUser}}/> */}
+      <Provider store={store}>
+       <UserAuth.Provider  value={userAuthentication}>
+        <UserContext.Provider value={{user: user, setUser: setUser}}>
+          <Header />
+          <main className="mb-3 font-[Poppins]">
+            <Outlet context={[setUserAuthentication]} />
+          </main>
+          <Footer />
+        </UserContext.Provider>
+       </UserAuth.Provider>
+      </Provider>
     </>
   );
 };
