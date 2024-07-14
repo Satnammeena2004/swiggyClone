@@ -1,8 +1,7 @@
 import {TiHome} from "react-icons/ti";
 import {BiSolidOffer} from "react-icons/bi";
 import {FiShoppingCart} from "react-icons/fi";
-import {useContext, useState} from "react";
-import {Link, ScrollRestoration} from "react-router-dom";
+import {useContext} from "react";
 import {CgProfile, CgMail} from "react-icons/cg";
 import UserContext from "../utils/UserContext";
 import {useSelector} from "react-redux";

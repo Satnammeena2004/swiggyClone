@@ -3,12 +3,10 @@ import Footer from "./components/Footer";
 import Header from "./components/Header";
 import {Outlet} from "react-router-dom";
 import UserContext from "./utils/UserContext";
-import {Suspense, createContext, lazy, useContext, useState} from "react";
+import { createContext, useState} from "react";
 import {Provider} from "react-redux";
 import store from "./utils/store";
-import LogSignPage from "./components/LogSignPage";
 
-//<Outlet/> componenet
 
 export const UserAuth = createContext(false);
 

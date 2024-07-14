@@ -1,12 +1,12 @@
 import {useCallback,useState,useEffect} from "react";
-import { RESTAURANT_MENU_URL, specific_Restau } from './../constants';
-import {useNavigate} from 'react-router-dom'
-import { useGetRestuarantMenuApiQuery } from "../components/RTKQuery";
+import { RESTAURANT_MENU_URL } from './../constants';
+// import {useNavigate} from 'react-router-dom'
+// import { useGetRestuarantMenuApiQuery } from "../components/RTKQuery";
 const useRestaurantMenu = (resId)=>{
   //  const {json,isSuccess} = useGetRestuarantMenuApiQuery(resId);
   // console.log("Called",json);
   const [restMenuData, setRestMenuData] = useState([]);
-  const navigate = useNavigate()
+  // const navigate = useNavigate()
     const getSpecificRestaurant = useCallback(
     async function getSpecificRestaurant() {
       try {

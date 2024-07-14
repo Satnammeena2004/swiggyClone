@@ -1,5 +1,4 @@
 import {memo, useContext, useState} from "react";
-import {IoIosArrowUp} from "react-icons/io";
 import {MdKeyboardArrowDown, MdKeyboardArrowUp} from "react-icons/md";
 import UserContext from "../utils/UserContext";
 //on demand loading: mean initialy the home ui rendered when instamart clicked then it   js file loads ;
