@@ -7,7 +7,7 @@ import {IoArrowBack} from "react-icons/io5";
 
 const CarouselItems = memo(({imageId}) => {
   return (
-    <div className="carousel-items  min-w-[65vw] sm:min-w-[35vw]	snap-center	scroll-smooth">
+    <div className="carousel-items  min-w-[65vw] sm:min-w-[35vw] w-40	snap-center	scroll-smooth">
       <img src={IMAGE_URL + imageId} alt="..." />
     </div>
   );
