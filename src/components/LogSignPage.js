@@ -4,7 +4,7 @@ import UserContext from "../utils/UserContext";
 function LogSignPage() {
   const [signIn, setSignIn] = useState(false);
   const {user,setUser} = useContext(UserContext);
-  const [warnigs,setWarnings] = useState("");
+  const [warnigs] = useState("");
   const  naviagate = useNavigate()
   const form = useRef();
   const action = useActionData();
@@ -23,7 +23,6 @@ function LogSignPage() {
   function handleLogIn(e) {
     e.preventDefault();
     let formData = new FormData(form.current);
-    // console.log(localStorage.getItem("Users"));
     localStorage.setItem(
       "Users",
       JSON.stringify([

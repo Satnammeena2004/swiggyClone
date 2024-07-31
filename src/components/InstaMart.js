@@ -1,13 +1,11 @@
 import {memo, useContext, useState} from "react";
 import {MdKeyboardArrowDown, MdKeyboardArrowUp} from "react-icons/md";
 import UserContext from "../utils/UserContext";
-//on demand loading: mean initialy the home ui rendered when instamart clicked then it   js file loads ;
 
 const Section = memo(
   ({title, whoHaveToShow, setWhoHaveToShow, description}) => {
     const {user} = useContext(UserContext);
 
-    // const [isVisible, setIsVisible] = useState(false);
     function handleVisibility() {
       if (whoHaveToShow === title) {
         setWhoHaveToShow("Nothing");

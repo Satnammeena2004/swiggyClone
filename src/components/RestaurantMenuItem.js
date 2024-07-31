@@ -1,7 +1,6 @@
 import {memo, useState} from "react";
 import {BiSolidUpArrow, BiSolidDownArrow,BiFoodTag} from "react-icons/bi";
 import {NOT_AVAILABLE_IMG, RESTAURANT_MENU_IMG} from "../constants";
-import {SiVega} from "react-icons/si";
 import {addItem, removeItem} from "../utils/cartSlices";
 import {useDispatch} from "react-redux";
 import { OrderCountSection } from "./RestaurantCartCard";

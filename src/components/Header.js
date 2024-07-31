@@ -6,11 +6,7 @@ import {CgProfile, CgMail} from "react-icons/cg";
 import UserContext from "../utils/UserContext";
 import {useSelector} from "react-redux";
 import {NavLink,useNavigate} from "react-router-dom";
-// import Logo from '../images/logo.png'
 
-// Router Do Client Side Routing
-// Client Side Routing
-// Link is Use anchor tag behind the scenes
 
 const Title = () => {
   return (
@@ -29,7 +25,6 @@ const Title = () => {
 function LogAndSign() {
   const {user,setUser} = useContext(UserContext);
   const navigate = useNavigate();
-// console.log(user);
   return (
     <>
       {user?.name === "" ? (
@@ -50,7 +45,6 @@ const Header = () => {
   const {user} = useContext(UserContext);
   const cartItems = useSelector((store) => store.cart.items);
 
-  // console.log();
   return (
     <header className="header z-50 sticky top-0 shadow-sm bg-white flex justify-between items-center px-4 py-1 font-medium text-gray-800 font-[Poppins]">
       <Title />
