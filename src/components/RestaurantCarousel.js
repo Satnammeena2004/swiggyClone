@@ -7,9 +7,7 @@ import {IoArrowBack} from "react-icons/io5";
 
 const CarouselItems = memo(({imageId}) => {
   return (
-    <div className="carousel-items min-w-[10rem] min-h-[10rem] snap-center	scroll-smooth">
-      <img src={IMAGE_URL + imageId} alt="..." />
-    </div>
+      <img className="" src={IMAGE_URL + imageId} alt="..." />
   );
 });
 
@@ -37,7 +35,7 @@ const RestaurentsCarousel = ({ALL_DATA, restaurantBanner}) => {
           />
         </div>
       </div>
-      <div className="restaurents-carousel flex overflow-x-auto w-9/12 m-auto snap-mandatory snap-x gap-x-10 py-4" ref={ref}>
+      <div className="restaurents-carousel no-scrollbar flex overflow-x-auto w-9/12 h-40 m-auto snap-mandatory snap-x gap-x-10 py-4 scroll-smooth" ref={ref}>
         {restaurantBanner.length > 0 ? (
           restaurantBanner[0]
             .filter((elem) => elem.entityType === "BANNER")
