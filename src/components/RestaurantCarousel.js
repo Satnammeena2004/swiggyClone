@@ -30,7 +30,7 @@ const RestaurentsCarousel = ({ALL_DATA, restaurantBanner}) => {
           <IoMdArrowForward
           className="sm:text-3xl"
             onClick={() => {
-              ref.current.scrollBy(100, 0);
+              ref.current.scrollBy({left:100,top: 0,behavior:"smooth"});
             }}
           />
         </div>
