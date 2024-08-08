@@ -19,13 +19,13 @@ const SearchRestaurent = ({restaurentsList,setFilterRestaurantList,setQuery}) =>
         onChange={(e) => {
           setSearchString(e.target.value);
         }}
-        className="search-restaurent border-2"
+        className="search-restaurent border-2 w-2/5 p-2 rounded-lg"
         placeholder="Name"
         type="text"
       />
      
       
-      <button onClick={handleClick}>Search</button>
+      <button className="border-2 p-2 rounded-lg" onClick={handleClick}>Search</button>
     </div>
   );
 };
