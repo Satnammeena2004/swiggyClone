@@ -81,7 +81,7 @@ const Restaurents = ({
 
   return (
     <>
-      <h1>Top restaurant chains in Kota</h1>
+      <h1  className="text-2xl pl-44 box-border font-extrabold mt-4">Top restaurant chains in Kota</h1>
       {searchString !== "" && filterRestaurantList.length === 0 ? (
         <h2>Search Result Not Found "{searchString}"</h2>
       ) : (
