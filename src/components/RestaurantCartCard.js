@@ -22,7 +22,7 @@ export const OrderCountSection = memo(
 
     
     return (
-      <div className={"items-center justify-center flex " + className}>
+      <div className={"items-center justify-center flex bg-green-400" + className}>
         {countOfOrder?.orderCount === undefined && showingAddButton && (
           <button
             onClick={handleAdd}

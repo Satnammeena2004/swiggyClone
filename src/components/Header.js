@@ -49,7 +49,10 @@ function Button({ children, name, onSmash = () => "" ,path}) {
 
   return (
     <Link to={path}>
-    <button className="flex  items-center justify-center gap-x-2" onClick={onSmash}>{children}<span >{name}</span></button>
+    <button className="flex  items-center justify-center gap-x-2" onClick={(e)=>{
+    
+      onSmash()
+    }}>{children}<span >{name}</span></button>
     </Link>
 
   )
@@ -71,7 +74,7 @@ const Header = () => {
         <Button path={"/offers"} name={"Offers"}><BiSolidOffer /></Button>
         <Button path={"/help"} name={"Help"}><IoHelpCircleOutline /></Button>
         <Button  path={"/signIn"} name={"Sign In"}><CgLogIn /></Button>
-        <Button  path={"/cart"} name={"Cart"}><FiShoppingCart /></Button>
+        <Button  path={"/cart"} name={""}><><FiShoppingCart />{cartItems.length}</></Button>
       </div>
 
     </header>
