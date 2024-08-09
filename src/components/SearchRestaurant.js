@@ -22,6 +22,7 @@ const SearchRestaurent = ({restaurentsList,setFilterRestaurantList,setQuery}) =>
         className="search-restaurent border-2 w-2/5 p-2 rounded-lg"
         placeholder="Name"
         type="text"
+        id="search-input"
       />
      
       

@@ -2,7 +2,7 @@ import { TiHome } from "react-icons/ti";
 import { useContext } from "react";
 import UserContext from "../utils/UserContext";
 import { useSelector } from "react-redux";
-import {  useNavigate } from "react-router-dom";
+import { useNavigate,Link } from "react-router-dom";
 import { IoIosSearch } from "react-icons/io";
 import { BiSolidOffer } from "react-icons/bi";
 import { IoHelpCircleOutline } from "react-icons/io5";
@@ -45,15 +45,15 @@ function LogAndSign() {
 
 
 
-function Button({children,name}){
+function Button({ children, name, onSmash = () => "" ,path}) {
 
-  return( 
-  <div className="flex  items-center justify-center gap-x-2">
-  <button>{children}</button>
-  <span className="text-sm">{name}</span>
-  </div>
+  return (
+    <Link to={path}>
+    <button className="flex  items-center justify-center gap-x-2" onClick={onSmash}>{children}<span >{name}</span></button>
+    </Link>
+
   )
-  
+
 }
 
 const Header = () => {
@@ -63,15 +63,18 @@ const Header = () => {
     <header className="header z-50 sticky top-0 shadow-sm bg-white flex justify-between items-center px-4 py-1 font-medium text-gray-800 font-[Poppins]">
       <Title />
       <div className="flex gap-2 w-2/3 justify-between ">
-        <Button name={"Home"}><TiHome/></Button>
-        <Button name={"Search"}><IoIosSearch/></Button>
-        <Button name={"Offers"}><BiSolidOffer/></Button>
-        <Button name={"Help"}><IoHelpCircleOutline/></Button>
-        <Button name={"Sign In"}><CgLogIn/></Button>
-        <Button name={"Cart"}><FiShoppingCart/></Button>
+        <Button path={"/"} name={"Home"}><TiHome /></Button>
+        <Button onSmash={() => {
+          const search = document.getElementById("search-input");
+          search?.focus();
+        }} name={"Search"}><IoIosSearch /></Button>
+        <Button path={"/offers"} name={"Offers"}><BiSolidOffer /></Button>
+        <Button path={"/help"} name={"Help"}><IoHelpCircleOutline /></Button>
+        <Button  path={"/signIn"} name={"Sign In"}><CgLogIn /></Button>
+        <Button  path={"/cart"} name={"Cart"}><FiShoppingCart /></Button>
       </div>
-      
-          </header>
+
+    </header>
   );
 };
 
