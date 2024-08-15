@@ -16,10 +16,7 @@ const RestaurantMenu = () => {
   const restMenuData = useRestaurantMenu(resId);
   console.log(loaderData,navigation.state);
   return (
-    <div className="restaurant_manu_items flex flex-col items-center gap-y-2 font-[Poppins]">
-
-      <Cart className="fixed right-4 top-20 w-72 h-72 overflow-y-scroll border p-1 flex flex-col"/>
-
+    <div className="restaurant_manu_items flex flex-col items-center gap-y-2 font-['Roboto']">
       <h1>Reastaurent : {resId}</h1>
 
       {

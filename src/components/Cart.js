@@ -12,7 +12,7 @@ function Cart({className}) {
   }
   return (
     <>
-      <div className={" " + className ? className : ""}>
+      <div className={"m-auto w-3/5"}>
         <button className="p-2 bg-green-400 rounded-md" onClick={handleClear}>
           Clear Items
         </button>

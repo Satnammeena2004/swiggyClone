@@ -7,7 +7,7 @@ import {IoArrowBack} from "react-icons/io5";
 
 const CarouselItems = memo(({imageId}) => {
   return (
-      <img className="" src={IMAGE_URL + imageId} alt="..." />
+      <img className="select-none pointer-events-none" src={IMAGE_URL + imageId} alt="..." />
   );
 });
 

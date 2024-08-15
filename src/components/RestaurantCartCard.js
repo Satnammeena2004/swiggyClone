@@ -61,7 +61,7 @@ const RestaurantCartCard = ({
   const countOfOrder = itemsOfSlice?.find((e) => e?.id === item?.id);
   return (
     visible && (
-      <div className="border rounded-md my-0 mx-auto  border-b name-img p-2 flex gap-3 ">
+      <div className="border rounded-md my-0 mx-auto  border-b name-img p-2 flex gap-3 items-center justify-around">
         <img
           className="rounded-lg"
           src={customRestaurantIMG(100, 100, imageId)}
