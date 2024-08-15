@@ -10,6 +10,8 @@ function Cart({className}) {
   function handleClear() {
     dispatch(clearItems());
   }
+
+  
   return (
     <>
       <div className={"m-auto w-3/5"}>
