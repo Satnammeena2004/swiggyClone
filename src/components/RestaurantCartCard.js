@@ -22,7 +22,7 @@ export const OrderCountSection = memo(
 
     
     return (
-      <div className={"items-center justify-center flex bg-green-400" + className}>
+      <div className={"items-center justify-center flex" + className}>
         {countOfOrder?.orderCount === undefined && showingAddButton && (
           <button
             onClick={handleAdd}
@@ -61,7 +61,7 @@ const RestaurantCartCard = ({
   const countOfOrder = itemsOfSlice?.find((e) => e?.id === item?.id);
   return (
     visible && (
-      <div className="border rounded-md my-0 mx-auto  border-b name-img p-2 flex gap-3 items-center justify-around">
+      <div className="border rounded-md my-0 mx-auto  border-b name-img px-8 py-2 flex gap-3 items-center justify-around">
         <img
           className="rounded-lg"
           src={customRestaurantIMG(100, 100, imageId)}

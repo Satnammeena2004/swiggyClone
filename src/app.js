@@ -25,10 +25,10 @@ const AppLayout = () => {
        <UserAuth.Provider  value={userAuthentication}>
         <UserContext.Provider value={{user: user, setUser: setUser}}>
           <Header />
-          <main className="mb-3 font-[Poppins]">
+          <main className="mb-3 *:font-[Poppins]">
             <Outlet context={[setUserAuthentication]} />
           </main>
-          <Footer />
+          {/* <Footer /> */}
         </UserContext.Provider>
        </UserAuth.Provider>
       </Provider>
