@@ -1,6 +1,24 @@
 import { customRestaurantIMG } from "../constants";
 
-const RestaurantOffers = ({restMenuData}) => {
+// // <div
+// key={offerIds}
+// className="offer border rounded-md p-2 text-xs h-fit w-2/3"
+// >
+// <span>{offerTag}</span>
+// <div>
+//   <img
+//     src={customRestaurantIMG("28", "28", offerLogo)}
+//     alt={header}
+//   />
+//   <p className="text-nowrap">{header}</p>
+//   <div>
+//     <span>{description}</span>
+//     <span>{couponCode}</span>
+//   </div>
+// </div>
+// </div>
+
+const RestaurantOffers = ({ restMenuData }) => {
   const data = restMenuData
     .map((menu) =>
       menu?.card?.card?.gridElements?.infoWithStyle?.offers?.map((e) => e.info)
@@ -9,24 +27,38 @@ const RestaurantOffers = ({restMenuData}) => {
     .flat(1);
   // console.log(data);
   return (
-    <div className="offers w-2/4 border p-2 flex overflow-scroll ">
-      {data.map(({header, couponCode, offerTag, description, offerIds,offerLogo}) => {
-        // console.log(offerIds);
-        return (
-          <div
-            key={offerIds}
-            className="offer border rounded-md w-60 p-2 text-xs h-fit "
-          >
-            <span>{offerTag}</span>
-            <img src={customRestaurantIMG('28','28',offerLogo)} alt={header}/>
-            <p className="text-nowrap">{header}</p>
+    <div className="offers w-2/4 border p-2 flex space-x-4 overflow-x-auto">
+      {data.map(
+        ({
+          header,
+          couponCode,
+          offerTag,
+          description,
+          offerIds,
+          offerLogo,
+        }) => {
+          // console.log(offerIds);
+          return (
+            <div className="offer border rounded-md w-60 p-2 text-xs flex-shrink-0" key={offerIds}>
+        <span className="block font-bold mb-2">{offerTag}</span>
+        <div className="flex items-start">
+          <img
+            src={customRestaurantIMG("28", "28", offerLogo)}
+              alt={header}
+            className="mr-2"
+          />
+          <div>
+            <p className="whitespace-nowrap">{header}</p>
             <div>
               <span>{description}</span>
               <span>{couponCode}</span>
             </div>
           </div>
-        );
-      })}
+        </div>
+      </div>
+          );
+        }
+      )}
     </div>
   );
 };

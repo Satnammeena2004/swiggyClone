@@ -1,11 +1,12 @@
 import Restaurents from "./RestaurantCard";
 import SearchRestaurent from "./SearchRestaurant";
-import {useState} from "react";
+import { useEffect, useState } from "react";
 
 import RestaurentsCarousel from "./RestaurantCarousel";
 
 import useOnline from "../utils/useOnline";
 import useRestaurantData from "../utils/useRestaurantData";
+
 
 const Body = () => {
   const [addMuch, setAddMuch] = useState(0);
@@ -18,6 +19,14 @@ const Body = () => {
     setFilterRestaurantList,
   ] = useRestaurantData();
   const online = useOnline();
+
+  useEffect(() => {
+    window.addEventListener("scroll", () => {
+      console.log("scrollTop", document.documentElement.scrollTop);
+      console.log("scrollHeight", document.documentElement.scrollHeight);
+      console.log("clientHeight", document.documentElement.clientHeight);
+    });
+  }, []);
 
   if (!online) {
     return <h1>🔴 Your Offline,Please Check Your Connection !</h1>;
