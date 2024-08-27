@@ -25,7 +25,7 @@ export const RestaurentCard = memo(
         className={
           className
             ? className
-            : "card min-w-52 w-full shadow-md p-2 rounded hover:scale-90 transition-transform "
+            : "card min-w-52 w-full  p-2 rounded hover:scale-90 transition-transform "
         }
         to={"/restaurant/" + id}
       >
@@ -38,13 +38,13 @@ export const RestaurentCard = memo(
             src={RESTAURANT_IMG_URL + cloudinaryImageId}
             alt="card-img"
           />
-          <span className="absolute z-10 bottom-0 text-white left-4 text-xl font-bold tracking-tight text-slate-100">
+          <span className="absolute z-10 bottom-0  left-4 text-xl font-bold tracking-tight text-slate-100">
             {aggregatedDiscountInfoV3 &&
               aggregatedDiscountInfoV3?.header +
                 " " +
                 aggregatedDiscountInfoV3?.subHeader}
           </span>
-          <span style={{background:"linear-gradient(to top, #000000b8, transparent)"}} className=" w-full h-full absolute top-0 min-w-20 min-h-20"></span>
+          <span style={{background:"linear-gradient(to top, rgb(0 0 0 / 37%), transparent 20%)"}} className=" w-full h-full absolute top-0 min-w-20 min-h-20"></span>
         </div>
         <div className={className ? "order-first basis-3/4" : ""}>
           <h1
@@ -89,7 +89,7 @@ const Restaurents = ({
       )}
 
       <div className="restaurents ">
-        <div className="grid grid-cols-[repeat(auto-fit,minmax(180px,1fr))] grid-cols-3 gap-14 px-10 mx-auto  py-8 j  w-9/12 font-[Poppins]">
+        <div className="grid grid-cols-[repeat(auto-fit,minmax(180px,1fr))] gap-14 px-10 mx-auto  py-8 j  w-9/12 font-[Poppins]">
           {ALL_DATA.length > 0
             ? filterRestaurantList
                 ?.slice(0, 6 + addMuch)

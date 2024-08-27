@@ -4,6 +4,7 @@ import {IMAGE_URL} from "../constants";
 import Shimmer from "./Shimmer";
 import {IoMdArrowForward} from "react-icons/io";
 import {IoArrowBack} from "react-icons/io5";
+import CarouselShimmer from "./CarouselShimmer";
 
 const CarouselItems = memo(({imageId}) => {
   return (
@@ -42,8 +43,11 @@ const RestaurentsCarousel = ({ALL_DATA, restaurantBanner}) => {
             .map((e) => <CarouselItems {...e} key={e.id} />)
         ) : (
           <>
-            <Shimmer />
-            <Shimmer />
+            <CarouselShimmer />
+            <CarouselShimmer />
+            <CarouselShimmer />
+            <CarouselShimmer />
+          
           </>
         )}
       </div>

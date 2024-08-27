@@ -6,6 +6,7 @@ import RestaurentsCarousel from "./RestaurantCarousel";
 
 import useOnline from "../utils/useOnline";
 import useRestaurantData from "../utils/useRestaurantData";
+import Shimmer from "./Shimmer";
 
 
 const Body = () => {
@@ -53,6 +54,8 @@ const Body = () => {
           addMuch={addMuch}
           setAddMuch={setAddMuch}
         />
+        
+        
       </div>
     </main>
   );
