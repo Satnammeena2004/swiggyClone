@@ -1,6 +1,6 @@
 import {useParams} from "react-router-dom";
 import Shimmer from "./Shimmer";
-import {RestaurentCard} from "./RestaurantCard";
+import RestaurentCard from "./RestaurantCard";
 import useRestaurantMenu from "../utils/useRestaurentMenuData";
 import RestaurantOffers from "./RestaurantOffers";
 import MenuItem from "./RestaurantMenuItem";

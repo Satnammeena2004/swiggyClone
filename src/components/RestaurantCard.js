@@ -1,12 +1,11 @@
 // import "../App.css";
-import {FaStar} from "react-icons/fa";
-import {MdLocationPin} from "react-icons/md";
-import {memo} from "react";
-import Shimmer from "./Shimmer";
-import {Link} from "react-router-dom";
-import {RESTAURANT_IMG_URL} from "../constants";
+import { FaStar } from "react-icons/fa";
+import { MdLocationPin } from "react-icons/md";
+import { memo } from "react";
+import { Link } from "react-router-dom";
+import { RESTAURANT_IMG_URL } from "../constants";
 
-export const RestaurentCard = memo(
+ const RestaurentCard = memo(
   ({
     id,
     name,
@@ -31,7 +30,7 @@ export const RestaurentCard = memo(
       >
         <div
           className="card-image h-40  bg-gradient-to-b from-transparent  to-neutral-800 from-10%  rounded-lg overflow-hidden relative  "
-         
+
         >
           <img
             className="object-cover w-full h-full order-first relative  -z-10"
@@ -41,10 +40,10 @@ export const RestaurentCard = memo(
           <span className="absolute z-10 bottom-0  left-4 text-xl font-bold tracking-tight text-slate-100">
             {aggregatedDiscountInfoV3 &&
               aggregatedDiscountInfoV3?.header +
-                " " +
-                aggregatedDiscountInfoV3?.subHeader}
+              " " +
+              aggregatedDiscountInfoV3?.subHeader}
           </span>
-          <span style={{background:"linear-gradient(to top, rgb(0 0 0 / 37%), transparent 20%)"}} className=" w-full h-full absolute top-0 min-w-20 min-h-20"></span>
+          <span style={{ background: "linear-gradient(to top, rgb(0 0 0 / 37%), transparent 20%)" }} className=" w-full h-full absolute top-0 min-w-20 min-h-20"></span>
         </div>
         <div className={className ? "order-first basis-3/4" : ""}>
           <h1
@@ -62,7 +61,7 @@ export const RestaurentCard = memo(
 
           <h5 className=" truncate py-px text-sm	">{cuisines?.join(", ")}</h5>
           <h5 className="flex gap-1 items-center py-px text-sm	">
-            <MdLocationPin style={{color: "green"}} /> {locality}
+            <MdLocationPin style={{ color: "green" }} /> {locality}
           </h5>
         </div>
       </Link>
@@ -70,50 +69,6 @@ export const RestaurentCard = memo(
   }
 );
 
-const Restaurents = ({
-  ALL_DATA,
-  addMuch,
-  setAddMuch,
-  filterRestaurantList,
-  searchString,
-}) => {
-  console.log("filterRestaurantList", filterRestaurantList);
 
-  return (
-    <>
-      <h1  className="text-2xl pl-44 box-border font-extrabold mt-4">Top restaurant chains in Kota</h1>
-      {searchString !== "" && filterRestaurantList.length === 0 ? (
-        <h2>Search Result Not Found "{searchString}"</h2>
-      ) : (
-        ""
-      )}
+export default RestaurentCard
 
-      <div className="restaurents ">
-        <div className="grid grid-cols-[repeat(auto-fit,minmax(180px,1fr))] gap-14 px-10 mx-auto  py-8 j  w-9/12 font-[Poppins]">
-          {ALL_DATA.length > 0
-            ? filterRestaurantList
-                ?.slice(0, 6 + addMuch)
-                .map((e) => <RestaurentCard key={e.info.id} {...e.info} />)
-            : Array(6)
-                .fill(0)
-                .map((e, i) => <Shimmer key={i} />)}
-        </div>
-      </div>
-
-      {filterRestaurantList.length > 0 ? (
-        <div className="text-center p-4">
-          <button
-            className="more-restaurant-btn"
-            onClick={() => setAddMuch((n) => n + 3)}
-          >
-            MORE
-          </button>
-        </div>
-      ) : (
-        ""
-      )}
-    </>
-  );
-};
-
-export default Restaurents;

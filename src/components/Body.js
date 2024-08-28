@@ -1,12 +1,11 @@
-import Restaurents from "./RestaurantCard";
+import Restaurents from "./Restaurant";
 import SearchRestaurent from "./SearchRestaurant";
-import { useEffect, useState } from "react";
+import {useState ,useEffect} from "react";
 
 import RestaurentsCarousel from "./RestaurantCarousel";
 
 import useOnline from "../utils/useOnline";
 import useRestaurantData from "../utils/useRestaurantData";
-import Shimmer from "./Shimmer";
 
 
 const Body = () => {

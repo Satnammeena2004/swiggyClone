@@ -12,4 +12,13 @@ const Shimmer = () => {
     )
 }
 
-export default Shimmer;
+
+
+
+const ShimmerList = ({ count }) => {
+
+    return  Array(count).fill(0).map((e, i) => <Shimmer key={i} />)
+    
+}
+
+export default ShimmerList;
