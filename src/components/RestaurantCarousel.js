@@ -1,24 +1,33 @@
-import {memo, useRef} from "react";
+import { memo, useEffect, useRef } from "react";
 // import "../App.css";
-import {IMAGE_URL} from "../constants";
+import { IMAGE_URL } from "../constants";
 import Shimmer from "./Shimmer";
-import {IoMdArrowForward} from "react-icons/io";
-import {IoArrowBack} from "react-icons/io5";
+import { IoMdArrowForward } from "react-icons/io";
+import { IoArrowBack } from "react-icons/io5";
 import CarouselShimmer from "./CarouselShimmer";
 
-const CarouselItems = memo(({imageId}) => {
+const CarouselItems = memo(({ imageId }) => {
   return (
-      <img className="select-none pointer-events-none" src={IMAGE_URL + imageId} alt="..." />
+    <img className="select-none pointer-events-none" src={IMAGE_URL + imageId} alt="..." />
   );
 });
 
-const RestaurentsCarousel = ({ALL_DATA, restaurantBanner}) => {
+const RestaurentsCarousel = ({ ALL_DATA, restaurantBanner }) => {
   const ref = useRef(null);
+  // useEffect(() => {
 
+  //   if (ref.current) {
+  //     // setInterval(() => {
+
+  //     //   ref.current.scrollBy(100, 0);
+  //     // }, 300);
+  //   }
+
+  // }, [])
   return (
-  
+
     <div className="py-3 px-10">
-      
+
       <div className="restaurents-carousel-heading flex justify-between py-5 px-36 ">
         <h1 className="font-bold sm:text-3xl">Best Offer For You</h1>
         <div className="scroll-bar-arrows flex justify-between gap-3">
@@ -29,9 +38,9 @@ const RestaurentsCarousel = ({ALL_DATA, restaurantBanner}) => {
             }}
           />
           <IoMdArrowForward
-          className="sm:text-3xl"
+            className="sm:text-3xl"
             onClick={() => {
-              ref.current.scrollBy({left:100,top: 0,behavior:"smooth"});
+              ref.current.scrollBy({ left: 100, top: 0, behavior: "smooth" });
             }}
           />
         </div>
@@ -47,12 +56,12 @@ const RestaurentsCarousel = ({ALL_DATA, restaurantBanner}) => {
             <CarouselShimmer />
             <CarouselShimmer />
             <CarouselShimmer />
-          
+
           </>
         )}
       </div>
     </div>
-  
+
   );
 };
 

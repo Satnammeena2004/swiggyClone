@@ -41,7 +41,7 @@ const RestaurantOffers = ({ restMenuData }) => {
         }) => {
           // console.log(offerIds);
           return (
-            <div className="offer border rounded-md w-60 p-2 text-xs flex-shrink-0 " key={offerIds}>
+            <div className="offer border rounded-md w-60 p-2 text-xs flex-shrink-0" key={offerIds}>
               <span className="block font-bold mb-2">{offerTag}</span>
               <div className="flex items-start">
                 <img
@@ -63,8 +63,10 @@ const RestaurantOffers = ({ restMenuData }) => {
       )}
       <button onClick={() => {
         if (ref.current) {
-
-          ref.current.scrollBy(100,0)
+          // setInterval(() => {
+            
+          //   ref.current.scrollBy(10, 0)
+          // }, 50);
         }
       }} className="absolute right-1/4 top-1/3 text-white bg-black/85 w-10 h-10 rounded-full"><FaAngleRight className="absolute top-1/3 right-1/3 " />  </button>
 

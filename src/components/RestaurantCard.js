@@ -30,7 +30,7 @@ export const RestaurentCard = memo(
         to={"/restaurant/" + id}
       >
         <div
-          className="card-image h-40  bg-gradient-to-b from-transparent  to-neutral-800 from-10%  rounded-lg overflow-hidden relative"
+          className="card-image h-40  bg-gradient-to-b from-transparent  to-neutral-800 from-10%  rounded-lg overflow-hidden relative  "
          
         >
           <img
