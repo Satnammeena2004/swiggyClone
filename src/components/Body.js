@@ -6,6 +6,7 @@ import RestaurentsCarousel from "./RestaurantCarousel";
 
 import useOnline from "../utils/useOnline";
 import useRestaurantData from "../utils/useRestaurantData";
+import BannerCarousel from "./BannerCarousel";
 
 
 const Body = () => {
@@ -35,6 +36,7 @@ const Body = () => {
   return (
     <main className="main">
       <div>
+        <BannerCarousel/>
         <RestaurentsCarousel
           restaurantBanner={restaurantBanner}
           ALL_DATA={ALL_DATA}
