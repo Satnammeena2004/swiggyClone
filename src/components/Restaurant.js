@@ -26,13 +26,12 @@ const Restaurents = ({
             const CH = element.clientHeight;
             const value = SH - (CH + ST);
 
-            if (value <= 200 && flag) {
+            if (value <= 200 && flag.current) {
                 setShowShimmer(true)
                 flag.current = false
-                console.log("OUTSetTineOut")
                 setTimeout(() => {
-                    setAddMuch((n) => n + 3)
                     setShowShimmer(false)
+                    setAddMuch( addMuch + 3)
                     console.log("inSetTineOut")
                     flag.current = true
                 }, 1000)
@@ -45,7 +44,7 @@ const Restaurents = ({
             window.removeEventListener("scroll", onScroll);
 
         }
-    }, [setAddMuch])
+    }, [setAddMuch,addMuch])
 
     return (
         <>
