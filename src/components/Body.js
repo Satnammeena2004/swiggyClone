@@ -20,7 +20,7 @@ const Body = () => {
     setFilterRestaurantList,
   ] = useRestaurantData();
   const online = useOnline();
-
+console.log("banner ",restaurantBanner)
   useEffect(() => {
     window.addEventListener("scroll", () => {
       console.log("scrollTop", document.documentElement.scrollTop);

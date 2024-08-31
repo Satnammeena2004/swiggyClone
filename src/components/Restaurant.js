@@ -19,19 +19,19 @@ const Restaurents = ({
 
     useEffect(() => {
         const element = document.documentElement;;
-
+        const length= filterRestaurantList.length;
         function onScroll() {
             const ST = element.scrollTop;
             const SH = element.scrollHeight;
             const CH = element.clientHeight;
             const value = SH - (CH + ST);
 
-            if (value <= 200 && flag.current) {
+            if (value <= 200 && flag.current && addMuch<=length) {
                 setShowShimmer(true)
                 flag.current = false
                 setTimeout(() => {
                     setShowShimmer(false)
-                    setAddMuch( addMuch + 3)
+                    setAddMuch( addMuch + 6)
                     console.log("inSetTineOut")
                     flag.current = true
                 }, 1000)
