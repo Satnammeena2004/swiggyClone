@@ -65,19 +65,6 @@ const Restaurents = ({
                     {showShimmer && <ShimmerList count={3} />}
                 </div>
             </div>
-
-            {filterRestaurantList.length > 0 ? (
-                <div className="text-center p-4">
-                    <button
-                        className="more-restaurant-btn"
-                        onClick={() => setAddMuch((n) => n + 3)}
-                    >
-                        MORE
-                    </button>
-                </div>
-            ) : (
-                ""
-            )}
         </>
     );
 };

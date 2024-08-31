@@ -7,6 +7,7 @@ import RestaurentsCarousel from "./RestaurantCarousel";
 import useOnline from "../utils/useOnline";
 import useRestaurantData from "../utils/useRestaurantData";
 import BannerCarousel from "./BannerCarousel";
+import RestaurantPlaces from "./RestaurantPlaces";
 
 
 const Body = () => {
@@ -18,6 +19,7 @@ const Body = () => {
     restaurentsList,
     filterRestaurantList,
     setFilterRestaurantList,
+    cities
   ] = useRestaurantData();
   const online = useOnline();
 console.log("banner ",restaurantBanner)
@@ -55,6 +57,8 @@ console.log("banner ",restaurantBanner)
           addMuch={addMuch}
           setAddMuch={setAddMuch}
         />
+
+        <RestaurantPlaces  cities={cities}/>
         
         
       </div>
