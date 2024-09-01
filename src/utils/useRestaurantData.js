@@ -1,12 +1,14 @@
 import { useState, useEffect } from "react";
 import { RESTAURENT_URL } from '../constants'
-import { filter_Cities_To_Eat, filterBanner, filterRestaurant } from "./Helper";
+import { filter_Cities_To_Eat, filter_cuisines, filterBanner, filterRestaurant } from "./Helper";
 
 
 const useRestaurantData = () => {
   const [restaurantBanner, setRestaurantBanner] = useState([]);
   const [ALL_DATA, setALL_DATA] = useState([]);
   const [cities, setCities] = useState([]);
+  const [cuisines, setCuisines] = useState([]);
+  const [explore,setExplore] = useState([]);
   const [restaurentsList, setRestaurentsList] = useState([]);
   const [filterRestaurantList, setFilterRestaurantList] = useState([]);
 
@@ -23,6 +25,7 @@ const useRestaurantData = () => {
         );
         setRestaurantBanner(filterBanner(res));
         setCities(filter_Cities_To_Eat(res))
+        setCuisines(filter_cuisines(res))
         setRestaurentsList(filterRestaurant(res));
         setFilterRestaurantList(filterRestaurant(res));
         setALL_DATA(res.data.cards.map((e) => e.card.card));
@@ -33,8 +36,9 @@ const useRestaurantData = () => {
     almostGetting();
   }, []);
 
+  console.log("explore",explore)
 
-  return [ALL_DATA, restaurantBanner, restaurentsList, filterRestaurantList,setFilterRestaurantList,cities]
+  return [ALL_DATA, restaurantBanner, restaurentsList, filterRestaurantList,setFilterRestaurantList,cities,cuisines,explore]
 }
 
 

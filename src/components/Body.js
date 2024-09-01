@@ -19,7 +19,9 @@ const Body = () => {
     restaurentsList,
     filterRestaurantList,
     setFilterRestaurantList,
-    cities
+    cities,
+    cuisines,
+    explore
   ] = useRestaurantData();
   const online = useOnline();
 console.log("banner ",restaurantBanner)
@@ -59,6 +61,8 @@ console.log("banner ",restaurantBanner)
         />
 
         <RestaurantPlaces  cities={cities}/>
+        <RestaurantPlaces  cities={cuisines}/>
+        <RestaurantPlaces  cities={explore}/>
         
         
       </div>
